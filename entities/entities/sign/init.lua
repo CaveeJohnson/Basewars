@@ -47,14 +47,14 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (!ValidEntity(self.Owner)) then
+	if (!IsValid(self.Owner)) then
 		self.Entity:Remove()
 	end
 end
 
 function ENT:OnRemove()
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxsign=ply:GetTable().maxsign - 1
 	end
 end
@@ -67,7 +67,7 @@ function ENT:OnTakeDamage(dmg)
 	local damage = dmg:GetDamage()
 	local attacker=dmg:GetAttacker()
 	local inflictor=dmg:GetInflictor()
-	if !dmg:IsExplosionDamage() && ValidEntity(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
+	if !dmg:IsExplosionDamage() && IsValid(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
 		damage = damage*drugeffect_armorpiercermod
 	end
 	if self.Damage>0 then

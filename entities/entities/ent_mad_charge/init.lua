@@ -9,7 +9,7 @@ function ENT:Initialize()
 
 	self.Owner = self.Entity.Owner
 
-	if !ValidEntity(self.Owner) then
+	if !IsValid(self.Owner) then
 		self:Remove()
 		return
 	end
@@ -57,7 +57,7 @@ function ENT:Explosion()
 	local doorentities = ents.FindInSphere(self.Entity:GetPos(), 10)
 
 	for k, v in pairs(doorentities) do
-		if ValidEntity(v) and v:GetClass() == "prop_door_rotating" then
+		if IsValid(v) and v:GetClass() == "prop_door_rotating" then
 			v:Fire("open", "", 0.1)
 			v:Fire("unlock", "", 0.1)
 

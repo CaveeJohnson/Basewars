@@ -108,7 +108,7 @@ function SpyScan(ply,target,backscan)
 	else
 		Notify(ply,2,3,"Printing information on scan target in your console")
 		local weapon = "Nothing"
-		if ValidEntity(target:GetActiveWeapon()) then
+		if IsValid(target:GetActiveWeapon()) then
 			weapon = target:GetActiveWeapon():GetClass()
 		end
 		ply:PrintMessage(2, "\n" ..target:GetName() .. "\n" .. target:Health() .. "/" .. target:GetMaxHealth() .. " Health and " .. target:Armor() .. "/100 Armor\nHolding weapon: " .. weapon .. "\nOther weapons: \n")
@@ -135,7 +135,7 @@ function ReconScan(ply, target)
 	local stuff = 0
 	ply:PrintMessage(2,"\n")
 	for k, v in pairs(ents.FindInSphere(scanpos, 512)) do
-		if ValidEntity(v) then
+		if IsValid(v) then
 			if v:GetTable().Structure then
 				stuff = stuff+1
 				ply:PrintMessage(2, v:GetTable().PrintName .. " " .. v.Owner:GetName())

@@ -170,7 +170,7 @@ function SWEP:Think()
 	end
 
 	if self.Owner:GetNetworkedBool("Cooked") and self.Owner:GetNetworkedBool("LastShootCook") < CurTime() then
-		if ((SinglePlayer() and SERVER) or CLIENT) then
+		if ((game.SinglePlayer() and SERVER) or CLIENT) then
 			self.Weapon:SetNetworkedFloat("LastShootTime", CurTime())
 			self.Owner:EmitSound("NPC_CombineCamera.Click")
 		end

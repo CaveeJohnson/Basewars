@@ -13,12 +13,12 @@ SWEP.BobScale			= 1.0							// The scale of the viewmodel bob
 SWEP.RenderGroup 			= RENDERGROUP_OPAQUE
 
 // Override this in your SWEP to set the icon in the weapon selection
-if (file.Exists("../materials/weapons/swep.vmt")) then
+if (file.Exists("materials/weapons/swep.vmt", "GAME")) then
 	SWEP.WepSelectIcon	= surface.GetTextureID("weapons/swep")
 end
 
 // This is the corner of the speech bubble
-if (file.Exists("../materials/gui/speech_lid.vmt")) then
+if (file.Exists("materials/gui/speech_lid.vmt", "GAME")) then
 	SWEP.SpeechBubbleLid	= surface.GetTextureID("gui/speech_lid")
 end
 

@@ -16,14 +16,12 @@ function GM:ScoreboardHide()
 end
 
 
-local basename = surface.GetTextureID("LmaoLlama/basewars/scoreboard/name");
-local head = surface.GetTextureID("LmaoLlama/basewars/scoreboard/llheadertexture");
-local bg = surface.GetTextureID("LmaoLlama/basewars/scoreboard/llbgtexture");
-
 surface.CreateFont( "arial", 16, 500, true, false, "arial20")
 surface.CreateFont( "arial", 16, 600, true, false, "arialbold")
 
 function GM:GetTeamScoreInfo()
+
+	draw.NoTexture()
 
 	local TeamInfo = {}
 
@@ -130,7 +128,7 @@ function GM:HUDDrawScoreBoard()
 	-- Draw the Background
 	
 	surface.SetDrawColor( 255, 255, 255, 255 );	
-	surface.SetTexture( bg );
+	--surface.SetTexture( bg );
 	surface.DrawTexturedRect( boardx1+1, boardy1+120, 484, boardHeight-y+yOffset-32	);
 	surface.DrawTexturedRect( boardx2-2, boardy1+120, 2, boardHeight-y+yOffset-32	);
 	
@@ -148,7 +146,7 @@ function GM:HUDDrawScoreBoard()
 	
 	-- Draw the Header
 	surface.SetDrawColor( 255, 255, 255, 255 ); 
-	surface.SetTexture( head );
+	--surface.SetTexture( head );
 	surface.DrawTexturedRect( boardx1, boardy1, 512, 128);
 	
 	-- THE MIGHTY Outline
@@ -228,7 +226,7 @@ function GM:HUDDrawScoreBoard()
 		surface.DrawText( teamText )
 		yPosition = yPosition + 2
 			
-		surface.SetFont( "arialout" )
+		surface.SetFont( "default" )
 				
 
 		
@@ -264,7 +262,7 @@ end
 
 function GM:HUDDrawTargetID()
 
-	local tr = utilx.GetPlayerTrace( LocalPlayer(), LocalPlayer():GetCursorAimVector() )
+	local tr = util.GetPlayerTrace( LocalPlayer(), LocalPlayer():GetAimVector() )
 	local trace = util.TraceLine( tr )
 	if (!trace.Hit) then return end
 	if (!trace.HitNonWorld) then return end

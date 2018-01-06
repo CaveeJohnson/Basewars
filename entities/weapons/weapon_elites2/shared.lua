@@ -148,7 +148,7 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 		util.Effect(self.ShellEffect, effectdata)
 	end)
 
-	if (not self.Owner:IsNPC()) and ((SinglePlayer() and SERVER) or (not SinglePlayer() and CLIENT)) then
+	if (not self.Owner:IsNPC()) and ((game.SinglePlayer() and SERVER) or (not game.SinglePlayer() and CLIENT)) then
 		local eyeangle 	= self.Owner:EyeAngles()
 		eyeangle.pitch 	= eyeangle.pitch - recoil
 		self.Owner:SetEyeAngles(eyeangle)

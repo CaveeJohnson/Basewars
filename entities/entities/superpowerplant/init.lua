@@ -40,7 +40,7 @@ end
 
 function ENT:giveMoney()
 	local ply = self.Owner
-	if(ValidEntity(ply) && !self.Inactive) then
+	if(IsValid(ply) && !self.Inactive) then
 		if ply:CanAfford(10) then
 			ply:AddMoney( -10 );
 			Notify( ply, 2, 3, "$10 spent to keep Generator running." );
@@ -60,13 +60,13 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A GENERATOR HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO MAKE IT WORK AGAIN" );
-	self.Entity:SetColor(255,0,0,255)
+	self.Entity:SetColor(Color(255,0,0,255))
 end
 function ENT:notifypl()
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A GENERATOR IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO KEEP IT WORKING" );
-	self.Entity:SetColor(255,150,150,255)
+	self.Entity:SetColor(Color(255,150,150,255))
 end
 
 function ENT:Use(activator,caller)
@@ -76,7 +76,7 @@ function ENT:Use(activator,caller)
 		timer.Destroy( tostring(self.Entity) .. "notifyoff")
 		timer.Create( tostring(self.Entity) .. "notifyoff", 1080, 1, self.notifypl, self)
 		self.Inactive = false
-		self.Entity:SetColor(255,255,255,255)
+		self.Entity:SetColor(Color(255,255,255,255))
 	end
 end
 
@@ -89,7 +89,7 @@ function ENT:createDrug()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:UpdateSockets()
@@ -103,7 +103,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxgenerator=ply:GetTable().maxgenerator - 1
 	end
 end
@@ -116,16 +116,16 @@ function ENT:UpdateSockets()
 		end
 	else
 		for i=1,10,1 do
-			if !ValidEntity(self.Entity:GetNWEntity("socket"..tostring(i))) then
+			if !IsValid(self.Entity:GetNWEntity("socket"..tostring(i))) then
 				local newstructure = self.Entity:FindStructure()
-				if ValidEntity(newstructure) then
+				if IsValid(newstructure) then
 					self.Entity:SetNWEntity("socket"..tostring(i), newstructure)
 					newstructure:SetNWInt("power", newstructure:GetNWInt("power")+1)
 				end
 			end
 		end
 		for i=1,10,1 do
-			if ValidEntity(self.Entity:GetNWEntity("socket"..tostring(i))) && self.Entity:GetNWEntity("socket"..tostring(i)):GetPos():Distance(self.Entity:GetPos())>self.Powdist then
+			if IsValid(self.Entity:GetNWEntity("socket"..tostring(i))) && self.Entity:GetNWEntity("socket"..tostring(i)):GetPos():Distance(self.Entity:GetPos())>self.Powdist then
 				self.Entity:GetNWEntity("socket"..tostring(i)):SetNWInt("power", self.Entity:GetNWEntity("socket"..tostring(i)):GetNWInt("power")-1)
 				// since it doesnt want to send a nil, or itself, well just "ground it out" so to speak.
 				self.Entity:SetNWEntity("socket"..tostring(i),ents.GetByIndex(0))
@@ -149,7 +149,7 @@ end
 
 function ENT:UnSocket()
 	for i=1,10,1 do
-		if ValidEntity(self.Entity:GetNWEntity("socket"..tostring(i))) then
+		if IsValid(self.Entity:GetNWEntity("socket"..tostring(i))) then
 			self.Entity:GetNWEntity("socket"..tostring(i)):SetNWInt("power", self.Entity:GetNWEntity("socket"..tostring(i)):GetNWInt("power")-1)
 		end
 	end

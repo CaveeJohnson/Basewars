@@ -780,11 +780,11 @@ function DermaHelp()
     helmhtml:SetHTML(helphtml or "Error, contents not found")
 
 	
-    PropertySheet:AddSheet("Help", helmhtml, "gui/silkicons/page", false, false, "Help")
-	//DermaHelpTab(HELP, "Help", "Help", "gui/silkicons/page")
-	DermaHelpTab(RULES, "Rules", "Rules", "gui/silkicons/exclamation")
-	DermaHelpTab(ABOUT, "About", "About", "gui/silkicons/world")
-	DermaHelpTab(CHANGELOG, "ChangeLog", "Change Log", "gui/silkicons/page_white_wrench")
+    PropertySheet:AddSheet("Help", helmhtml, "icon16/page.png", false, false, "Help")
+	//DermaHelpTab(HELP, "Help", "Help", "icon16/page.png")
+	DermaHelpTab(RULES, "Rules", "Rules", "icon16/exclamation.png")
+	DermaHelpTab(ABOUT, "About", "About", "icon16/world.png")
+	DermaHelpTab(CHANGELOG, "ChangeLog", "Change Log", "icon16/page_white_wrench.png")
 	--DermaStatsTab()
 end	
 

@@ -44,7 +44,7 @@ function ENT:createFood()
 end
  
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -52,7 +52,7 @@ end
 function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity).."food") 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxMicrowaves=ply:GetTable().maxMicrowaves - 1
 	end
 end

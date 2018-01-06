@@ -65,7 +65,7 @@ function ENT:OnRemove( )
 	self.Entity:EjectMoney()
 	timer.Destroy(self.Entity) 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxmoneyvault=ply:GetTable().maxmoneyvault- 1
 	end
 end

@@ -55,7 +55,7 @@ end
 
 function ENT:Launch()
 
-	if(ValidEntity(self.Entity)) then
+	if(IsValid(self.Entity)) then
 	
 		if(!self.Entity.Fired) then
 			
@@ -100,7 +100,7 @@ end
 
 function ENT:Explode()
 
-	if(ValidEntity(self.Entity)) then
+	if(IsValid(self.Entity)) then
 
 		local firework_explosion = EffectData()
 		

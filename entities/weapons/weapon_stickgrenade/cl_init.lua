@@ -5,7 +5,7 @@ SWEP.Slot				= 4							// Slot in the weapon selection menu
 SWEP.SlotPos			= 1							// Position in the slot
 
 // Override this in your SWEP to set the icon in the weapon selection
-if (file.Exists("../materials/weapons/weapon_mad_magnade.vmt")) then
+if (file.Exists("materials/weapons/weapon_mad_magnade.vmt", "GAME")) then
 	SWEP.WepSelectIcon	= surface.GetTextureID("weapons/weapon_mad_magnade")
 end
 
@@ -17,7 +17,7 @@ function SWEP:DrawWorldModel()
 
 	local hand, offset, rotate
 	
-	if not ValidEntity(self.Owner) then
+	if not IsValid(self.Owner) then
 		self:DrawModel()
 		return
 	end

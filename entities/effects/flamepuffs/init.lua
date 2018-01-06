@@ -15,7 +15,7 @@ function EFFECT:Init( data )
 	
 	local Velocity 	= data:GetNormal()
 	local AddVel = Vector(0,0,0)
-	if ValidEntity(self.WeaponEnt) && ValidEntity(self.WeaponEnt:GetOwner()) then
+	if IsValid(self.WeaponEnt) && IsValid(self.WeaponEnt:GetOwner()) then
 		local AddVel = self.WeaponEnt:GetOwner():GetVelocity()*0.5
 	end
 	local jetlength = data:GetScale()
@@ -41,7 +41,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 72, 96 ) )
 				particle:SetRoll( math.Rand( 0, 360 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( math.Rand( 130, 230 ), math.Rand( 100, 160 ), 120 )
+				particle:SetColor(Color( math.Rand( 130, 230 )), math.Rand( 100, 160 ), 120 )
 				particle:VelocityDecay( false )
 			
 		end
@@ -56,7 +56,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 24, 32 ) )
 				particle:SetRoll( math.Rand( 0, 360 ) )
 				particle:SetRollDelta( math.Rand( -0.5, 0.5 ) )
-				particle:SetColor( 30, 15, math.Rand( 190, 225 ) )
+				particle:SetColor(Color( 30, 15, math.Rand( 190, 225 )) )
 				particle:VelocityDecay( false )
 			
 		end
@@ -72,7 +72,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 64, 72 ) )
 				particle:SetRoll( math.Rand( 0, 360 ) )
 				particle:SetRollDelta( math.Rand( -0.5, 0.5 ) )
-				particle:SetColor( 255, 255, 255 )
+				particle:SetColor(Color( 255, 255, 255 ))
 				particle:VelocityDecay( false )
 		end]]--
 

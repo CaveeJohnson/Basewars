@@ -71,13 +71,13 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A STILL HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO CONTINUE GETTING MONEY" );
-	self.Entity:SetColor(255,0,0,255)
+	self.Entity:SetColor(Color(255,0,0,255))
 end
 function ENT:notifypl()
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A STILL IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-	self.Entity:SetColor(255,150,150,255)
+	self.Entity:SetColor(Color(255,150,150,255))
 end
 
 function ENT:Use(activator,caller)
@@ -88,7 +88,7 @@ function ENT:Use(activator,caller)
 	timer.Destroy( tostring(self.Entity) .. "notifyoff")
 	timer.Create( tostring(self.Entity) .. "notifyoff", 1680, 1, self.notifypl, self)
 	self.Inactive = false
-	self.Entity:SetColor(255,255,255,255)
+	self.Entity:SetColor(Color(255,255,255,255))
 end
 
 function ENT:createDrug()
@@ -101,7 +101,7 @@ function ENT:createDrug()
 end
  
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime()+0.1)
@@ -114,7 +114,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxStill=ply:GetTable().maxStill - 1
 	end
 end

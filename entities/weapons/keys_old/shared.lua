@@ -10,7 +10,7 @@ end
 if( CLIENT ) then
 
 	SWEP.DrawAmmo = false;
-	if (file.Exists("../materials/weapons/weapon_mad_medic.vmt")) then
+	if (file.Exists("materials/weapons/weapon_mad_medic.vmt", "GAME")) then
 	SWEP.WepSelectIcon	= surface.GetTextureID("weapons/weapon_mad_medic")
 end
 

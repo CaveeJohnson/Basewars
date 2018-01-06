@@ -20,7 +20,7 @@ function ENT:Initialize()
 	self.Panel:SetParent(self.Entity)
 	self.Panel:SetSolid(SOLID_NONE)
 	self.Panel:SetMoveType(MOVETYPE_NONE)
-	self.Panel:SetColor(0,255,85,255)
+	self.Panel:SetColor(Color(0,255,85,255))
 
 	self.Panel1 = ents.Create("prop_dynamic_override")
 	self.Panel1:SetModel( "models/props_lab/reciever01a.mdl" )
@@ -29,7 +29,7 @@ function ENT:Initialize()
 	self.Panel1:SetParent(self.Entity)
 	self.Panel1:SetSolid(SOLID_NONE)
 	self.Panel1:SetMoveType(MOVETYPE_NONE)
-	self.Panel1:SetColor(0,255,85,255)
+	self.Panel1:SetColor(Color(0,255,85,255))
 	self.Panel1:SetMaterial( "models/shiny" )
 
 	self.Panel2 = ents.Create("prop_dynamic_override")
@@ -39,7 +39,7 @@ function ENT:Initialize()
 	self.Panel2:SetParent(self.Entity)
 	self.Panel2:SetSolid(SOLID_NONE)
 	self.Panel2:SetMoveType(MOVETYPE_NONE)
-	self.Panel2:SetColor(0,255,85,255)
+	self.Panel2:SetColor(Color(0,255,85,255))
 	self.Panel2:SetMaterial( "models/shiny" )
 
 	self.Panel3 = ents.Create("prop_dynamic_override")
@@ -49,7 +49,7 @@ function ENT:Initialize()
 	self.Panel3:SetParent(self.Entity)
 	self.Panel3:SetSolid(SOLID_NONE)
 	self.Panel3:SetMoveType(MOVETYPE_NONE)
-	self.Panel3:SetColor(0,255,85,255)
+	self.Panel3:SetColor(Color(0,255,85,255))
 	self.Panel3:SetMaterial( "models/shiny" )
 
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )
@@ -75,7 +75,7 @@ end
 
 function ENT:giveMoney()
 	local ply = self.Owner
-	if(ValidEntity(ply) && !self.Inactive && self.Entity:IsPowered()) then
+	if(IsValid(ply) && !self.Inactive && self.Entity:IsPowered()) then
 		// ply:AddMoney( 25 );
 
 		local trace = { }
@@ -96,7 +96,7 @@ function ENT:giveMoney()
 		moneybag:SetPos(self.Entity:GetPos()+self.Entity:GetAngles():Forward()*17+self.Entity:GetAngles():Right()*0+self.Entity:GetAngles():Up()*15)
 		moneybag:SetAngles(Angle(0,90,90))
 		moneybag:Spawn();
-		moneybag:SetColor(200,255,200,255)
+		moneybag:SetColor(Color(200,255,200,255))
 			moneybag:SetMoveType( MOVETYPE_VPHYSICS )
 
 
@@ -108,7 +108,7 @@ function ENT:giveMoney()
 		moneybag2:SetPos(self.Entity:GetPos()+self.Entity:GetAngles():Forward()*0+self.Entity:GetAngles():Right()*17+self.Entity:GetAngles():Up()*15)
 		moneybag2:SetAngles(Angle(0,0,90))
 		moneybag2:Spawn();
-		moneybag2:SetColor(200,255,200,255)
+		moneybag2:SetColor(Color(200,255,200,255))
 			moneybag2:SetMoveType( MOVETYPE_VPHYSICS )
 
 		moneybag2:GetTable().MoneyBag = true;
@@ -120,7 +120,7 @@ function ENT:giveMoney()
 		moneybag3:SetAngles(Angle(0,0,90))
 		moneybag3:Spawn();
 		moneybag3:SetMoveType( MOVETYPE_VPHYSICS )
-		moneybag3:SetColor(200,255,200,255)
+		moneybag3:SetColor(Color(200,255,200,255))
 
 		moneybag3:GetTable().MoneyBag = true;
 		moneybag3:GetTable().Amount = amount
@@ -139,14 +139,14 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A MONEY PRINTER HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO CONTINUE GETTING MONEY" );
-	self.Entity:SetColor(255,0,0,254)
+	self.Entity:SetColor(Color(255,0,0,254))
 end
 function ENT:notifypl()
 	self.NearInact = true
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A MONEY PRINTER IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-	self.Entity:SetColor(255,150,150,254)
+	self.Entity:SetColor(Color(255,150,150,254))
 end
 
 function ENT:Use(activator,caller)
@@ -168,13 +168,13 @@ function ENT:Reload()
 	timer.Create( tostring(self.Entity) .. "notifyoff", 50, 1, self.notifypl, self)
 	self.Inactive = false
 	self.NearInact = false
-	self.Entity:SetColor(229, 228, 226, 254)
+	self.Entity:SetColor(Color(229, 228, 226, 254))
 	local drugPos = self.Entity:GetPos()
 	self.Entity:SetNWBool("sparking",false)
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -184,7 +184,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxPlatinumPrinter=ply:GetTable().maxPlatinumPrinter - 1
 	end
 end

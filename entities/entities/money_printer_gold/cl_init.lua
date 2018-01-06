@@ -6,7 +6,7 @@ function ENT:Draw( )
 	local Ang = self:GetAngles()
 	
 	local owner = self.Owner
-	owner = (ValidEntity(owner) and owner:Nick()) or "unknown"
+	owner = (IsValid(owner) and owner:Nick()) or "unknown"
 	local upgrade = self.Entity:GetNWInt("upgrade")
 	
 	surface.SetFont("HUDNumber5")
@@ -44,7 +44,7 @@ end
 --	
 --	local upgrade = self.Entity:GetNWInt("upgrade")
 --	local owner = self.Owner
---	owner = (ValidEntity(owner) and owner:Nick()) or "Unknown"
+--	owner = (IsValid(owner) and owner:Nick()) or "Unknown"
 --	
 ----	if ply:GetNWEntity( "drawmoneytitle" ) == true then
 --	

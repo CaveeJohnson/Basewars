@@ -33,7 +33,7 @@ function EFFECT:Think( )
 					particle:SetStartSize( math.Rand( 0.5, 3 ) )
 					particle:SetEndSize( math.Rand( 3, 5 ) )
 					particle:SetRoll( math.Rand( -0.2, 0.2 ) )
-					particle:SetColor( 255, 255, 255, 230)
+					particle:SetColor(Color( 255, 255, 255, 230))
 					particle:SetGravity( Vector( 0, 0, -400 ) )
 					
 				end

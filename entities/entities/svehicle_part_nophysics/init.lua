@@ -25,7 +25,7 @@ function ENT:Think()
 	
 end
 function ENT:OnRemove()
-	if ValidEntity(self.Core) && !self.IsEngine && !self.IsPlate then
+	if IsValid(self.Core) && !self.IsEngine && !self.IsPlate then
 		//self.Core:Remove()
 	end
 end
@@ -36,9 +36,9 @@ function ENT:OnTakeDamage(dmg)
 	end
 	if self.Entity:GetNWInt("damage")<=0 && (self.IsPlate==true || self.IsEngine==true)then
 		self.Entity:Explode()
-		if self.IsEngine==true && ValidEntity(self.Core) then
+		if self.IsEngine==true && IsValid(self.Core) then
 			self.Core:EngineDied(dmg:GetAttacker())
-		elseif self.IsPlate==true && ValidEntity(self.Core) then
+		elseif self.IsPlate==true && IsValid(self.Core) then
 			self.Core:PlateDied(self.Entity, dmg:GetAttacker())
 		end
 		self.Entity:Remove()
@@ -66,7 +66,7 @@ end
 
 /*
 function ENT:Use(ply, caller)
-	if ValidEntity(self.Core:GetPod()) then
+	if IsValid(self.Core:GetPod()) then
 		ply:EnterVehicle(self.Core:GetPod())
 	end
 end

@@ -76,7 +76,7 @@ function dropWeapon( ply )
 
 	local tr = util.TraceLine( trace );
 	local ent = ply:GetActiveWeapon()
-	if !ValidEntity(ent) then return  ""; end
+	if !IsValid(ent) then return  ""; end
 	local diddrop = true
 	local upgrade = ent:GetNWBool("upgraded")
 	if(ent:GetClass( ) == "weapon_deagle2") then
@@ -312,7 +312,7 @@ function scanPlayer( ply, args )
 		Notify( ply, 4, 3, "Cannot afford this" );
 		return "";
 	end
-	if !ValidEntity(ply:GetTable().Tower) then
+	if !IsValid(ply:GetTable().Tower) then
 		Notify(ply,4,3,"You must have a Radar Tower to use this command. say /buyradar")
 	else
 		local userExists = false
@@ -327,7 +327,7 @@ function scanPlayer( ply, args )
 				target:SetNWBool("scannered", false)
 				return "";
 			end
-			if ValidEntity(target) then
+			if IsValid(target) then
 				userExists = true
 				tower:GetTable().Scans = tower:GetTable().Scans-1
 				umsg.Start("RadarScan")
@@ -367,7 +367,7 @@ function playerMobhit( ply, args )
 		//local useridExists = false
 		//for k, v in pairs(player.GetAll()) do
 		local v = FindPlayer(args[1])
-		if ValidEntity(v) then
+		if IsValid(v) then
 			//if(v:Alive()) then
 				//if(v:UserID( ) == tonumber(args[1])) then
 					//useridExists = true
@@ -1380,7 +1380,7 @@ function DropMoney( ply, args )
   moneybag:SetModel( "models/props/cs_assault/Money.mdl" );
 	moneybag:SetPos( tr.HitPos );
 	moneybag:Spawn();
-	moneybag:SetColor(200,255,200,255)
+	moneybag:SetColor(Color(200,255,200,255))
 
 	moneybag:GetTable().MoneyBag = true;
 	moneybag:GetTable().Amount = amount;
@@ -1551,7 +1551,7 @@ function GM:KeyPress( ply, code )
 
 		local tr = util.TraceLine( trace );
 
-		if( tr.Entity!=nil and ValidEntity(tr.Entity) and not ply:KeyDown( IN_ATTACK ) ) then
+		if( tr.Entity!=nil and IsValid(tr.Entity) and not ply:KeyDown( IN_ATTACK ) ) then
 
 			if( tr.Entity:GetTable().Letter ) then
 
@@ -1590,13 +1590,14 @@ function GM:KeyPress( ply, code )
 end
 
 
-function GM:EntityTakeDamage(ply, inflictor, attacker, damage, dmginfo)
+function GM:EntityTakeDamage(ply, dmginfo)
+	local inflictor, attacker, damage = dmginfo:GetInflictor(), dmginfo:GetAttacker(), dmginfo:GetDamage()
 	local ignoredrug = false
 	if inflictor:GetClass()=="env_fire" || inflictor:GetClass()=="env_physexplosion" || inflictor:GetClass()=="auto_turret_gun" || inflictor:GetClass()=="weapon_molotov" || inflictor:GetClass()=="weapon_flamethrower" ||inflictor:GetClass()=="weapon_knife2" || inflictor:GetClass()=="weapon_gasgrenade" || inflictor:GetClass()=="weapon_tranqgun" || inflictor:GetClass()=="bigbomb" then
 		ignoredrug = true
 	end
 	local scaler = 1
-	if (inflictor:GetClass()=="env_physexplosion" || inflictor:GetClass()=="env_fire") && ValidEntity(inflictor:GetTable().attacker) then
+	if (inflictor:GetClass()=="env_physexplosion" || inflictor:GetClass()=="env_fire") && IsValid(inflictor:GetTable().attacker) then
 		attacker = inflictor:GetTable().attacker
 	end
 	if (attacker.Amp == true && !inflictor:IsPlayer() && inflictor:GetClass()!="auto_turret_gun" && inflictor:GetClass()!="weapon_knife2" && inflictor:GetClass()!="weapon_gasgrenade" && inflictor:GetClass()!="weapon_tranqgun" && inflictor:GetClass()!="bigbomb") then
@@ -1768,7 +1769,7 @@ local function SpawnEnt()
 		WelcomeSign:SetPos( Vector(-2795.4063, -2468.0625, -99.5000));
 		WelcomeSign:SetAngles(Angle(90, 90, 180))
 		WelcomeSign:Spawn();
-		WelcomeSign:SetColor(0, 0, 0, 1)
+		WelcomeSign:SetColor(Color(0, 0, 0, 1))
 		local phys = WelcomeSign:GetPhysicsObject()
 
 		phys:EnableMotion(false)

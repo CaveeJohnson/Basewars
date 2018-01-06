@@ -10,7 +10,7 @@ function ENT:Initialize()
 	self.Entity:SetDTEntity(0, self.Entity.Owner)
 	self.Owner = self.Entity:GetDTEntity(0)
 
-	if !ValidEntity(self.Owner) then
+	if !IsValid(self.Owner) then
 		self:Remove()
 		return
 	end

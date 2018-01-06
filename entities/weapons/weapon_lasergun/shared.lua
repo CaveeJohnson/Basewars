@@ -121,7 +121,7 @@ function SWEP:PrimaryAttack()
 	// In singleplayer this doesn't get called on the client, so we use a networked float
 	// to send the last shoot time. In multiplayer this is predicted clientside so we don't need to 
 	// send the float.
-	if ( (SinglePlayer() && SERVER) || CLIENT ) then
+	if ( (game.SinglePlayer() && SERVER) || CLIENT ) then
 		self.Weapon:SetNetworkedFloat( "LastShootTime", CurTime() )
 	end
 	
@@ -158,7 +158,7 @@ function SWEP:CSShootBullet( dmg, recoil, numbul, cone )
 	self.Owner:SetAnimation( PLAYER_ATTACK1 )				// 3rd Person Animation
 	
 	// CUSTOM RECOIL !
-	if ( (SinglePlayer() && SERVER) || ( !SinglePlayer() && CLIENT ) ) then
+	if ( (game.SinglePlayer() && SERVER) || ( !game.SinglePlayer() && CLIENT ) ) then
 	
 		local eyeang = self.Owner:EyeAngles()
 		eyeang.pitch = eyeang.pitch - recoil

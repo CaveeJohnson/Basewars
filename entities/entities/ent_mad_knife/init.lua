@@ -73,7 +73,7 @@ end
 function ENT:PhysicsCollide(data, phys)
 	
 	local Ent = data.HitEntity
-	if !(ValidEntity(Ent) or Ent:IsWorld()) then return end
+	if !(IsValid(Ent) or Ent:IsWorld()) then return end
 
 	if Ent:IsWorld() then
 			util.Decal("ManhackCut", data.HitPos + data.HitNormal, data.HitPos - data.HitNormal)

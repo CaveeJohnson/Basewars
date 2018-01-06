@@ -32,7 +32,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Entity:GetOwner())==false) then
+	if (IsValid(self.Entity:GetOwner())==false) then
 		self.Entity:Remove()
 	end
 end
@@ -54,7 +54,7 @@ function ENT:PhysicsCollide( data, physobj )
 		// nested if statements, to escape the errors.
 		self.Entity:EmitSound("weapons/crossbow/bolt_skewer1.wav")
 		if (data.HitEntity!=nil) then
-			if (ValidEntity(data.HitEntity)) then
+			if (IsValid(data.HitEntity)) then
 				self.Fuckit=true
 				if (data.HitEntity:IsPlayer()) then
 					StunPlayer(data.HitEntity, 35)

@@ -75,7 +75,7 @@ function ENT:Use(activator,caller)
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -130,7 +130,7 @@ function ENT:OnRemove( )
 	self.Entity:EjectSuperDrugs()
 	timer.Destroy(self.Entity) 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxdrugfactory=ply:GetTable().maxdrugfactory - 1
 	end
 end

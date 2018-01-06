@@ -28,7 +28,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (!ValidEntity(self.Entity:GetOwner())) then
+	if (!IsValid(self.Entity:GetOwner())) then
 		self.Entity:Remove()
 	end
 	self.Entity:GetPhysicsObject():SetVelocity(self.Entity:GetForward()*99999)

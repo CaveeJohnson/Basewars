@@ -235,7 +235,7 @@ end
 function SWEP:Holster()
 
 	if (CLIENT) and self.Ghost:IsValid() then
-		self.Ghost:SetColor(255, 255, 255, 0)
+		self.Ghost:SetColor(Color(255, 255, 255, 0))
 	end
 
 	return true
@@ -248,7 +248,7 @@ end
 function SWEP:OnRemove()
 
 	if (CLIENT) and self.Ghost:IsValid() then
-		self.Ghost:SetColor(255, 255, 255, 0)
+		self.Ghost:SetColor(Color(255, 255, 255, 0))
 	end
 
 	return true

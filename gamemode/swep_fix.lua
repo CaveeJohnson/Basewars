@@ -31,7 +31,7 @@ end
 --################### Overwrite SWEP:SetNextPrimaryFire to compensate lag @aVoN
 function meta:SetNextPrimaryFire(delay)
 	self:__SetNextPrimaryFire(delay); -- Even if this does not seem have an effect, I do not want to destroy scripts which are relying on this
-	if(ValidEntity(self.Owner) and self.Owner:IsPlayer()) then
+	if(IsValid(self.Owner) and self.Owner:IsPlayer()) then
 		local time = CurTime();
 		-- The Clientside fixed "NextPrimaryAttack" - First we wait until the server should have told the client when he can shoot again. Then we use GMod's internals
 		local delay = (delay or time) - time; -- SWEP's delay
@@ -48,7 +48,7 @@ end
 --################### Overwrite SWEP:SetNextSecondaryFire to compensate lag @aVoN
 function meta:SetNextSecondaryFire(delay)
 	self:__SetNextSecondaryFire(delay); -- Even if this does not seem have an effect, I do not want to destroy scripts which are relying on this
-	if(ValidEntity(self.Owner) and self.Owner:IsPlayer()) then
+	if(IsValid(self.Owner) and self.Owner:IsPlayer()) then
 		local time = CurTime();
 		-- The Clientside fixed "NextSecondaryAttack" - First we wait until the server should have told the client when he can shoot again. Then we use GMod's internals
 		local delay = (delay or time) - time; -- SWEP's delay

@@ -181,7 +181,7 @@ function ENT:createGun()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	if(self.Entity:GetNWBool("sparking") == true) then
@@ -194,7 +194,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "spawned_weapon")
 	timer.Destroy(tostring(self.Entity) .. "dostuff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxgunfactory=ply:GetTable().maxgunfactory - 1
 	end
 end

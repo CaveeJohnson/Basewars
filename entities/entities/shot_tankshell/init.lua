@@ -35,7 +35,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Entity:GetOwner())==false) then
+	if (IsValid(self.Entity:GetOwner())==false) then
 		self.Entity:Remove()
 	end
 	// self.Entity:GetPhysicsObject():SetVelocity(self.Entity:GetUp()*4000)
@@ -58,7 +58,7 @@ function ENT:PhysicsUpdate()
 		tracedata.endpos = self.Entity:GetAngles():Up()*20
 		tracedata.filter = self.Entity
 	trace = util.TraceLine(tracedata)
-	if (ValidEntity(trace.Entity)) then
+	if (IsValid(trace.Entity)) then
 		self.DidHit = true
 	end
 	if (self.DidHit == true) then

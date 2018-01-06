@@ -23,7 +23,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
-	self.Entity:SetColor(25,25,25,255)
+	self.Entity:SetColor(Color(25,25,25,255))
 	local phys = self.Entity:GetPhysicsObject()
 	if(phys:IsValid()) then phys:Wake() end
 	self.Entity:SetVar("damage",20)

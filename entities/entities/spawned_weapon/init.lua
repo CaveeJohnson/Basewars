@@ -29,7 +29,7 @@ function ENT:Use(activator,caller)
 	local class = self.Entity:GetNWString("weaponclass")
 
 	local plweapon = activator:GetWeapon(class)
-	if ValidEntity(plweapon) then
+	if IsValid(plweapon) then
 		if class!="weapon_worldslayer" then
 			activator:GiveAmmo(plweapon:GetTable().Primary.DefaultClip, plweapon:GetPrimaryAmmoType())
 		else
@@ -39,11 +39,11 @@ function ENT:Use(activator,caller)
 		activator:Give(class)
 	end
 	local weapon = activator:GetWeapon(class)
-	if ValidEntity(weapon) && self.Upgrade then
+	if IsValid(weapon) && self.Upgrade then
 		weapon:Upgrade(true)
 	end
 	
-	if ValidEntity(self.spawner) && activator!=self.spawner then
+	if IsValid(self.spawner) && activator!=self.spawner then
 		Notify(self.spawner,4,3,activator:GetName() .. " picked up your gun factory weapon.")
 	end
 	self.Entity:Remove()

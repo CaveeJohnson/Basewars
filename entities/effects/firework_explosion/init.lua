@@ -8,10 +8,10 @@ function EFFECT:Init( data )
 	local NumParticles = 256
 	local Force = 1000
 	local StartColor = data:GetStart()
-	local EndColor = data:GetAngle()
+	local EndColor = data:GetAngles()
 	local LifeTime = data:GetMagnitude()
 	local DieTime = data:GetScale()
-	WorldSound( "fireworks/firework_explosion_"..math.random(1, 3)..".wav", vOffset, 160, 130 )
+	sound.Play( "fireworks/firework_explosion_"..math.random(1, 3)..".wav", vOffset, 160, 130 )
 	
 	
 	
@@ -29,7 +29,7 @@ function EFFECT:Init( data )
 				
 				local life = math.Clamp(math.Rand(LifeTime - 5, LifeTime), 0.1, 50)
 				
-				particle:SetColor(StartColor.x, StartColor.y, StartColor.z)
+				particle:SetColor(Color(StartColor.x, StartColor.y, StartColor.z))
 				
 				particle:SetVelocity( vec )
 				
@@ -50,7 +50,7 @@ function EFFECT:Init( data )
 				
 				//TRAIL
 				
-				particle2:SetColor(255, 255, 255)
+				particle2:SetColor(Color(255, 255, 255))
 				
 				particle2:SetVelocity(vec*0.99)
 				
@@ -79,7 +79,7 @@ function ChangeParticleCol(particles, r, g, b)
 
 	for k, v in pairs(particles) do
 	
-		v:SetColor(r, g, b)
+		v:SetColor(Color(r, g, b))
 	
 	end
 

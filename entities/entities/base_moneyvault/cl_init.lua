@@ -56,17 +56,17 @@ function ENT:DrawEntityOutline( size )
 	
 		// First Outline	
 		self:SetModelScale( ScaleOutline2 * size )
-		SetMaterialOverride( matOutlineBlack )
+		render.MaterialOverride( matOutlineBlack )
 		self:DrawModel()
 		
 		
 		// Second Outline
 		self:SetModelScale( ScaleOutline1 * size )
-		SetMaterialOverride( matOutlineWhite )
+		render.MaterialOverride( matOutlineWhite )
 		self:DrawModel()
 		
 		// Revert everything back to how it should be
-		SetMaterialOverride( nil )
+		render.MaterialOverride( nil )
 		self:SetModelScale( ScaleNormal )
 		
 	render.SuppressEngineLighting( false )

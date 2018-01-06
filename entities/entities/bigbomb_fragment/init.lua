@@ -28,7 +28,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end

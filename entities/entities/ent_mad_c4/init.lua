@@ -9,7 +9,7 @@ function ENT:Initialize()
 
 	self.Owner = self.Entity.Owner
 
-	if !ValidEntity(self.Owner) then
+	if !IsValid(self.Owner) then
 		self:Remove()
 		return
 	end
@@ -63,7 +63,7 @@ function ENT:Think()
 		end
 	end
 
-	self.Entity:SetColor(255, 255 * (1 - self.Defuse), 255 * (1 - self.Defuse), 255)
+	self.Entity:SetColor(Color(255, 255 * (1 - self.Defuse)), 255 * (1 - self.Defuse), 255)
 
 	if self.Defuse >= 1 then
 		self.Entity:Remove()

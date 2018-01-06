@@ -14,7 +14,7 @@ function ENT:Draw( )
 	
 	local upgrade = self.Entity:GetNWInt("upgrade")
 	local owner = self.Owner
-	owner = (ValidEntity(owner) and owner:Nick()) or "Unknown"
+	owner = (IsValid(owner) and owner:Nick()) or "Unknown"
 	
 --	if ply:GetNWEntity( "drawmoneytitle" ) == true then
 	

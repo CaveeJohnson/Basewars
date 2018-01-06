@@ -26,7 +26,7 @@ end
 
 function ENT:giveMoney()
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		if (self.Inactive) then
 			Notify( ply, 4, 3, "A drug lab is inactive, press use on it to make it active again." );
 		end
@@ -57,24 +57,24 @@ end
 function ENT:shutOff()
 	local ply = self.Owner
 	self.Inactive = true
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		Notify( ply, 1, 3, "NOTICE: A DRUG LAB HAS GONE INACTIVE" );
 		Notify( ply, 1, 3, "PRESS USE ON IT TO CONTINUE GETTING MONEY" );
-		self.Entity:SetColor(255,0,0,255)
+		self.Entity:SetColor(Color(255,0,0,255))
 	end
 end
 function ENT:notifypl()
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		Notify( ply, 4, 3, "NOTICE: A DRUG LAB IS ABOUT TO GO INACTIVE" );
 		Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-		self.Entity:SetColor(255,150,150,255)
+		self.Entity:SetColor(Color(255,150,150,255))
 	end
 end
 
 function ENT:Use(activator,caller)
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		self.Entity:SetNWBool("sparking",true)
 		if (self.Entity:GetNWInt("upgrade")==5) then
 			timer.Create( tostring(self.Entity) .. "drug", 5, 1, self.createDrug, self)
@@ -99,7 +99,7 @@ function ENT:Use(activator,caller)
 		timer.Destroy( tostring(self.Entity) .. "notifyoff")
 		timer.Create( tostring(self.Entity) .. "notifyoff", 1080, 1, self.notifypl, self)
 		self.Inactive = false
-		self.Entity:SetColor(255,255,255,255)
+		self.Entity:SetColor(Color(255,255,255,255))
 	end
 end
 
@@ -113,7 +113,7 @@ function ENT:createDrug()
 end
  
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime()+0.1)
@@ -122,7 +122,7 @@ end
 
 function ENT:noOwner()
 	self.Inactive = true
-	self.Entity:SetColor(0,255,0,255)
+	self.Entity:SetColor(Color(0,255,0,255))
 	timer.Destroy(tostring(self.Entity) .. "drug")
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
@@ -132,12 +132,12 @@ end
 
 function ENT:ownerTick()
 	local ply = self.Owner
-	if (ValidEntity(ply)) then
+	if (IsValid(ply)) then
 		self.unowned = false
 		Notify(ply,0,3,"A Drug Lab is inactive where you left it")
 		timer.Destroy(tostring(self.Entity) .. "findowner")
 		timer.Destroy(tostring(self.Entity) .. "fail")
-		self.Entity:SetColor(255,0,0,255)
+		self.Entity:SetColor(Color(255,0,0,255))
 		ply:GetTable().maxDrug=ply:GetTable().maxDrug + 1
 	end
 end
@@ -150,7 +150,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxDrug=ply:GetTable().maxDrug - 1
 	end
 end

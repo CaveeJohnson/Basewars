@@ -34,7 +34,7 @@ end
 
 function ENT:giveMoney()
 	local ply = self.Owner
-	if(ValidEntity(ply) && !self.Inactive && self.Entity:IsPowered()) then
+	if(IsValid(ply) && !self.Inactive && self.Entity:IsPowered()) then
 		// ply:AddMoney( 25 );
 
 		local trace = { }
@@ -56,7 +56,7 @@ function ENT:giveMoney()
 		moneybag:SetPos( tr.HitPos );
 		moneybag:SetAngles(self.Entity:GetAngles())
 		moneybag:Spawn();
-		moneybag:SetColor(200,255,200,255)
+		moneybag:SetColor(Color(200,255,200,255))
 		moneybag:SetMoveType( MOVETYPE_VPHYSICS )
 		moneybag:GetTable().MoneyBag = true;
 		moneybag:GetTable().Amount = amount
@@ -75,14 +75,14 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A MONEY PRINTER HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO CONTINUE GETTING MONEY" );
-	self.Entity:SetColor(255,0,0,254)
+	self.Entity:SetColor(Color(255,0,0,254))
 end
 function ENT:notifypl()
 	self.NearInact = true
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A MONEY PRINTER IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-	self.Entity:SetColor(255,150,150,254)
+	self.Entity:SetColor(Color(255,150,150,254))
 end
 
 function ENT:Use(activator,caller)
@@ -104,13 +104,13 @@ function ENT:Reload()
 	timer.Create( tostring(self.Entity) .. "notifyoff", 200, 1, self.notifypl, self)
 	self.Inactive = false
 	self.NearInact = false
-	self.Entity:SetColor(230, 232, 250, 254)
+	self.Entity:SetColor(Color(230, 232, 250, 254))
 	local drugPos = self.Entity:GetPos()
 	self.Entity:SetNWBool("sparking",false)
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -120,7 +120,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxSilverPrinter=ply:GetTable().maxSilverPrinter - 1
 	end
 end

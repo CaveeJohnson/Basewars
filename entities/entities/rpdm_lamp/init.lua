@@ -44,7 +44,7 @@ function ENT:SetLightColor( r, g, b )
 	self:SetVar( "lightg", g )
 	self:SetVar( "lightb", b )
 	
-	self:SetColor( r, g, b, 255 )
+	self:SetColor(Color( r, g, b, 255 ))
 	
 	self.m_strLightColor = Format( "%i %i %i", r, g, b )
 	

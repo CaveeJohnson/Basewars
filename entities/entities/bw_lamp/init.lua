@@ -44,7 +44,7 @@ function ENT:SetLightColor( r, g, b )
 	self:SetVar( "lightg", g )
 	self:SetVar( "lightb", b )
 	
-	self:SetColor( r, g, b, 255 )
+	self:SetColor(Color( r, g, b, 255 ))
 	
 	self.m_strLightColor = Format( "%i %i %i", r, g, b )
 	
@@ -120,7 +120,7 @@ function ENT:Toggle()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime()+0.1)
@@ -129,7 +129,7 @@ end
 
 function ENT:OnRemove( )
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxlamp=ply:GetTable().maxlamp - 1
 	end
 end

@@ -77,7 +77,7 @@ function SWEP:EntsInSphereBack(pos, range)
 	local ents = ents.FindInSphere(pos, range)
 
 	for k, v in pairs(ents) do
-		if v ~= self and v ~= self.Owner and (v:IsNPC() or v:IsPlayer()) and ValidEntity(v) and self:EntityFaceBack(v) then
+		if v ~= self and v ~= self.Owner and (v:IsNPC() or v:IsPlayer()) and IsValid(v) and self:EntityFaceBack(v) then
 			return true
 		end
 	end
@@ -197,7 +197,7 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound("Weapon_Knife.Slash")
 	end
 
-	if ((SinglePlayer() and SERVER) or CLIENT) then
+	if ((game.SinglePlayer() and SERVER) or CLIENT) then
 		self.Weapon:SetNetworkedFloat("LastShootTime", CurTime())
 	end
 

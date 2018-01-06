@@ -41,7 +41,7 @@ function ENT:DrawTranslucent( bDontDrawModel )
 end
 
 function ENT:Think()
-	self.Entity:SetColor(math.random(1,55), math.random(1,255), math.random(1,255), 255)
+	self.Entity:SetColor(Color(math.random(1,55)), math.random(1,255), math.random(1,255), 255)
 end
 
 local matOutlineWhite 	= Material( "Models/effects/comball_tape" )
@@ -60,17 +60,17 @@ function ENT:DrawEntityOutline( size )
 	// First Outline
 	self.Entity:SetModelScale( ScaleOutline2 * size )
 	self.Entity:SetupBones( matOutlineWhite)
-	SetMaterialOverride( matOutlineBlack )
+	render.MaterialOverride( matOutlineBlack )
 	self.Entity:DrawModel()
 	
 	// Second Outline
 	self.Entity:SetModelScale( ScaleOutline1 )
 	self.Entity:SetupBones()
-	SetMaterialOverride( matOutlineWhite )
+	render.MaterialOverride( matOutlineWhite )
 	self.Entity:DrawModel()
 	
 	// Revert everything back to how it should be
-	SetMaterialOverride( nil )
+	render.MaterialOverride( nil )
 	self.Entity:SetModelScale( ScaleNormal )
 	self.Entity:SetupBones()
 	

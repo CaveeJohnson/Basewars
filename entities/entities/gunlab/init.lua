@@ -34,7 +34,7 @@ function ENT:Use( activator )
 	timer.Create( tostring(self.Entity) .. "spawned_weapon", 0.5, 1, self.createGun, self)
 	if (!self.Ready) then return end
 	local gun = activator:GetActiveWeapon()
-	if !ValidEntity(gun) then return end
+	if !IsValid(gun) then return end
 	if (gun:GetNWBool("upgraded")) then
 		Notify(activator, 4, 3, "This weapon is already upgraded!")
 		self.Ready = false
@@ -207,7 +207,7 @@ function ENT:Use( activator )
 		end
 		if (upgradecost>0) then
 			local owner = self.Owner
-			if ValidEntity(owner) && activator!=owner then
+			if IsValid(owner) && activator!=owner then
 				owner:AddMoney(math.ceil(upgradecost/2))
 				Notify(owner, 2, 3, "Paid $" .. math.ceil(upgradecost/2) .. " for selling a gun upgrade.")
 			end
@@ -222,7 +222,7 @@ function ENT:createGun()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -230,7 +230,7 @@ end
 function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity))
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxgunlabs=ply:GetTable().maxgunlabs - 1
 	end
 end

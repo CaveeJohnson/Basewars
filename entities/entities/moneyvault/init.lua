@@ -53,7 +53,7 @@ function ENT:EjectMoney( )
       moneybag:SetModel( "models/props/cs_assault/Money.mdl" );
 			moneybag:SetPos( self:GetPos( ) + Vector( 0, 0, 20 ) );
 			moneybag:SetAngles( self:GetAngles( ) );
-			moneybag:SetColor( 200, 255, 200, 255 );
+			moneybag:SetColor(Color( 200, 255, 200, 255 ));
 			moneybag:Spawn( );
 			moneybag:GetTable( ).MoneyBag = true;
 			moneybag:GetTable( ).Amount = self.Money;

@@ -36,7 +36,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Entity:GetOwner())==false) then
+	if (IsValid(self.Entity:GetOwner())==false) then
 		self.Entity:Remove()
 	end
 end

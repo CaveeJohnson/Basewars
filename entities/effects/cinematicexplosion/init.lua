@@ -12,7 +12,7 @@ function EFFECT:Init( data )
 	local vOffset = data:GetOrigin()
 	local vNorm = data:GetStart()
 	local NumParticles = 8
-	WorldSound( "ambient/explosions/explode_9.wav", vOffset, 130, 130 )
+	sound.Play( "ambient/explosions/explode_9.wav", vOffset, 130, 130 )
 	local emitter = ParticleEmitter( vOffset )
 	
 		shockwave = emitter:Add( "effects/yellowflare", vOffset )
@@ -27,7 +27,7 @@ function EFFECT:Init( data )
 			shockwave:SetStartSize( 100 )
 			shockwave:SetEndSize( 15000 )
 			
-			shockwave:SetColor(255,255,255)
+			shockwave:SetColor(Color(255,255,255))
 			
 		end
 	
@@ -45,7 +45,7 @@ function EFFECT:Init( data )
 				shockwave2:SetStartSize( 300 )
 				shockwave2:SetEndSize( 350 )
 				
-				shockwave2:SetColor(50,50,50)
+				shockwave2:SetColor(Color(50,50,50))
 				shockwave2:SetAirResistance( 30 )
 				
 				shockwave2:SetGravity( Vector( 0, 0, 500 ) )
@@ -72,7 +72,7 @@ function EFFECT:Init( data )
 				particle:SetStartSize( 30 )
 				particle:SetEndSize( 15 )
 				
-				particle:SetColor(255,255,255)
+				particle:SetColor(Color(255,255,255))
 				
 				//particle:SetRoll( math.Rand(0, 360) )
 				//particle:SetRollDelta( math.Rand(-200, 200) )
@@ -103,7 +103,7 @@ function EFFECT:Init( data )
 				particle2:SetStartSize( 150 )
 				particle2:SetEndSize( 200 )
 				
-				particle2:SetColor(150,150,140)
+				particle2:SetColor(Color(150,150,140))
 				
 				//particle2:SetRoll( math.Rand(0, 360) )
 				//particle2:SetRollDelta( math.Rand(-200, 200) )
@@ -133,7 +133,7 @@ function EFFECT:Init( data )
 				particle3:SetStartSize( 150 )
 				particle3:SetEndSize( 120 )
 				
-				particle3:SetColor(150,100,100)		
+				particle3:SetColor(Color(150,100,100))		
 				
 				particle3:SetRoll( math.Rand(0, 360) )
 				particle3:SetRollDelta( math.Rand(-2, 2) )
@@ -161,7 +161,7 @@ function EFFECT:Init( data )
 				particle4:SetStartSize( 200 )
 				particle4:SetEndSize( 120 )
 				
-				particle4:SetColor(0,0,0)		
+				particle4:SetColor(Color(0,0,0))		
 				
 				particle4:SetRoll( math.Rand(0, 360) )
 				particle4:SetRollDelta( math.Rand(-2, 2) )
@@ -212,7 +212,7 @@ function ParticleThink( part )
 			particle:SetStartSize( ((100 + math.Rand(0,10)) - (part:GetLifeTime() * 100)) )
 			particle:SetEndSize( ((120 + math.Rand(0,10)) - (part:GetLifeTime() * 100)) )
 			local Dark = math.Rand(0,230)
-			particle:SetColor(230 - Dark,230 - Dark,230 - Dark)
+			particle:SetColor(Color(230 - Dark,230 - Dark,230 - Dark))
 				
 			particle:SetRoll( math.Rand(-0.5, 0.5) )
 			particle:SetRollDelta( math.Rand(-1, 1) )

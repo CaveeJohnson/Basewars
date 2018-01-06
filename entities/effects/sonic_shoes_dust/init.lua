@@ -6,7 +6,7 @@ function EFFECT:Init(data)
 	rnd.z = 0;
 	local pos = (data:GetOrigin() + Vector(0, 0, 4) + rnd);
 	local vel = data:GetStart();
-	local num = data:GetAngle();
+	local num = data:GetAngles();
 	local nummin, nummax = num.p, num.y;
 	local size = data:GetScale();
 	local norm = data:GetNormal();
@@ -17,7 +17,7 @@ function EFFECT:Init(data)
 		local part = em:Add("particles/smokey", pos);
 		local size = math.Rand((size * .5), size);
 		if (part) then
-			part:SetColor(255, 255, 255, 255);
+			part:SetColor(Color(255, 255, 255, 255));
 			local fan = (push * .1);
 			part:SetVelocity(((vel * push) + (VectorRand() * (norm.x * .1))));
 			part:SetDieTime(math.Rand(.5, 1.5));

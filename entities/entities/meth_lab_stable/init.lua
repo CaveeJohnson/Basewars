@@ -14,7 +14,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
-	self.Entity:SetColor(0, 0, 0, 1)
+	self.Entity:SetColor(Color(0, 0, 0, 1))
 	
 	self.Dish2 = ents.Create("prop_dynamic_override")
 	self.Dish2:SetModel( "models/props_silo/processor.mdl" )
@@ -100,13 +100,13 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A METH LAB HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO KEEP GETTING MONEY" );
-	self.Dish2:SetColor(255,0,0,255)
+	self.Dish2:SetColor(Color(255,0,0,255))
 end
 function ENT:notifypl()
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A METH LAB IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-	self.Dish2:SetColor(255,150,150,255)
+	self.Dish2:SetColor(Color(255,150,150,255))
 end
 
 function ENT:Use(activator,caller)
@@ -121,7 +121,7 @@ function ENT:Use(activator,caller)
 	timer.Destroy( tostring(self.Entity) .. "notifyoff")
 	timer.Create( tostring(self.Entity) .. "notifyoff", 1080, 1, self.notifypl, self)
 	self.Inactive = false
-	self.Dish2:SetColor(255,255,255,255)
+	self.Dish2:SetColor(Color(255,255,255,255))
 end
 
 function ENT:createDrug()
@@ -161,7 +161,7 @@ function ENT:Think()
 			self:StopSound("ambient/levels/labs/machine_moving_loop4.wav")
 			end
 		end
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime()+0.1)
@@ -176,7 +176,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	self.Playsound = false
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxstablemethlab=ply:GetTable().maxstablemethlab - 1
 	end
 end

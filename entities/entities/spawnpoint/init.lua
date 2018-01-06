@@ -22,14 +22,14 @@ function ENT:Initialize()
 end
 
 function ENT:Think( )
-	if (ValidEntity(self.Owner)!=true) then
+	if (IsValid(self.Owner)!=true) then
 		self.Entity:Remove()
 	end
 end
 
 function ENT:OnRemove( ) 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxspawn = ply:GetTable().maxspawn - 1
 	end
 end

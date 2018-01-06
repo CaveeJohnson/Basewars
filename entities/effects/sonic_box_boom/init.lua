@@ -7,7 +7,7 @@ function EFFECT:Init(data)
 	
 	local part = em:Add("particles/smokey", pos);
 	if (part) then
-		part:SetColor(255, 255, 255, 255);
+		part:SetColor(Color(255, 255, 255, 255));
 		part:SetVelocity(Vector(0, 0, math.random(120, 140)));
 		part:SetDieTime(math.Rand(.175, .35));
 		part:SetLifeTime(0);

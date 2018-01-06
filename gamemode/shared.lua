@@ -1,3 +1,43 @@
+timer.Simple_UNSAFE = timer.Simple_UNSAFE or timer.Simple
+function timer.Simple(time, func, ...)
+	local old = select("#", ...) > 0
+
+	if old then
+		local args = {...}
+
+		timer.Simple_UNSAFE(time, function()
+			if isentity(args[1]) and not IsValid(args[1]) then return end -- these timers actually work even BETTER than the original
+
+			local res, err = pcall(func, unpack(args))
+			if not res then
+				ErrorNoHalt(string.format("OLD TIMER FAILURE: %s\n", err))
+			end
+		end)
+	else
+		timer.Simple_UNSAFE(time, func)
+	end
+end
+
+timer.Create_UNSAFE = timer.Create_UNSAFE or timer.Create
+function timer.Create(tid, time, rep, func, ...)
+	local old = select("#", ...) > 0
+
+	if old then
+		local args = {...}
+
+		timer.Create_UNSAFE(tid, time, rep, function()
+			if isentity(args[1]) and not IsValid(args[1]) then return end -- these timers actually work even BETTER than the original
+
+			local res, err = pcall(func, unpack(args))
+			if not res then
+				ErrorNoHalt(string.format("OLD TIMER FAILURE: %s\n", err))
+			end
+		end)
+	else
+		timer.Create_UNSAFE(tid, time, rep, func)
+	end
+end
+
 team.SetUp( 1, "Citizen", Color( 125, 125, 125, 255 ) );
 --team.SetUp( 2, "Cop", Color( 25, 25, 170, 255 ) );
 --team.SetUp( 3, "Mayor", Color( 150, 20, 20, 255 ) );
@@ -21,10 +61,10 @@ team.SetUp( 1, "Citizen", Color( 125, 125, 125, 255 ) );
 --team.SetUp( 20, "Gabe Newell", Color( 238, 99, 99, 255 ) );
 GMS = {}
 
-GM.Name 	= "RGaming Base Wars"
-GM.Author 	= "By Uggleking and nickelpro"
-GM.Email 	= "nickelpro@gmail.com"
-GM.Website 	= "www.xldoy.com/blog"
+GM.Name 	= "shitcodewars"
+GM.Author 	= "By satan"
+GM.Email 	= "satan@gmail.com"
+GM.Website 	= "https://hell.com"
 
 --include("sh_teammenu.lua")
 

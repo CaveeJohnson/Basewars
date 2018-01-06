@@ -7,7 +7,7 @@ function EFFECT:Init( data )
 	
 	self.Beamstart = data:GetOrigin()
 	self.Beamend = data:GetStart()
-	local color = data:GetAngle()
+	local color = data:GetAngles()
 	self.Color = Color(color.p,color.y,color.r,255)
 	if tonumber(self.Color.r)<100 then self.Color.r=100 end
 	if tonumber(self.Color.g)<100 then self.Color.g=100 end

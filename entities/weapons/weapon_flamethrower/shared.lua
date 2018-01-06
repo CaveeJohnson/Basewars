@@ -138,7 +138,7 @@ function SWEP:PrimaryAttack()
 		
 		local vel = 0
 		// add their own velocity to it to ensure that people who are running away are burned too.
-		if ValidEntity(traceRes.Entity) then
+		if IsValid(traceRes.Entity) then
 			vel = traceRes.Entity:GetVelocity():Distance(Vector(0,0,0))
 		end
 		local jetlength = (hitpos - PlayerPos):Length()+vel

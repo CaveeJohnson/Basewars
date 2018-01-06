@@ -27,7 +27,7 @@ hook.Add( "Think", "EntityDecay", function( )
 				k:Remove( );
 			end;
 			if CurTime( ) >= DecayRateCounter then
-				k:SetColor( v.R - 5, v.G - 5, v.B - 5, v.A );
+				k:SetColor(Color( v.R - 5, v.G - 5, v.B - 5, v.A ));
 				v.R = v.R - 5;
 				v.G = v.G - 5;
 				v.B = v.B - 5;

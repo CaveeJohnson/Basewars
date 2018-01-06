@@ -81,13 +81,13 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	if (self.Armed==true) then
 		if self.LastUsed+3<CurTime() && self.Disarming<60 then
 			self.Disarming=self.Disarming+1
-			self.Entity:SetColor(self.Disarming*4, self.Disarming*4, self.Disarming*4, 255)
+			self.Entity:SetColor(Color(self.Disarming*4, self.Disarming*4, self.Disarming*4, 255))
 		end
 		self.Entity:Beep()
 		if (self.Time<CurTime()+5) then
@@ -157,7 +157,7 @@ function ENT:Explode()
 		local class = v:GetClass()
 		if (class=="prop_physics_multiplayer" || class=="prop_physics_respawnable" || class=="prop_physics" || class=="phys_magnet" || class=="gmod_spawner" || class=="gmod_wheel" || class=="gmod_thruster" || class=="gmod_button" || class=="sent_keypad" || class=="auto_turret") then
 			local entowner = player.GetByUniqueID(v:GetVar("PropProtection"))
-			if (ValidEntity(entowner)) then
+			if (IsValid(entowner)) then
 				entowner:GetTable().shitweldcount=entowner:GetTable().shitweldcount+1
 				entowner:SetNWBool("shitwelding", true)
 				// keep the mingebag that just got bomb raped from spawning anything for the next minute.
@@ -208,7 +208,7 @@ function ENT:Use(activator,caller)
 				self.Disarming = self.Disarming-1
 			end
 			if self.Tick==1 then self.Tick=0 else self.Tick=1 end
-			self.Entity:SetColor(self.Disarming*4, self.Disarming*4, self.Disarming*4, 255)
+			self.Entity:SetColor(Color(self.Disarming*4, self.Disarming*4, self.Disarming*4, 255))
 			if (self.Disarming%5==0) then
 				self.Entity:Beep()
 			end
@@ -318,7 +318,7 @@ end
 
 function ENT:OnRemove()
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxBigBombs=ply:GetTable().maxBigBombs - 1
 	end
 end

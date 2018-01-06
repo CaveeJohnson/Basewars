@@ -81,7 +81,7 @@ else
 	
 	function SWEP:ReverbRelease()
 		if not self.initialized then self:InitializeSounds() end
-		WorldSound(self.release, self.Owner:GetPos(), 0, self.smoothpitch)
+		sound.Play(self.release, self.Owner:GetPos(), 0, self.smoothpitch)
 	end
 	
 	function SWEP:OneShot()

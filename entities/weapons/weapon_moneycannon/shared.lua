@@ -81,7 +81,7 @@ moneybag:SetPos(self.Owner:GetShootPos())
 moneybag:SetOwner(self.Owner)
 moneybag:SetPhysicsAttacker(self.Owner)
 moneybag:Spawn();
-moneybag:SetColor(200,255,200,255)
+moneybag:SetColor(Color(200,255,200,255))
 moneybag:GetTable().MoneyBag = true;
 moneybag:GetTable().Amount = 25000
 local phys = moneybag:GetPhysicsObject()
@@ -107,7 +107,7 @@ moneybag:SetPos(self.Owner:GetShootPos())
 moneybag:SetOwner(self.Owner)
 moneybag:SetPhysicsAttacker(self.Owner)
 moneybag:Spawn();
-moneybag:SetColor(200,255,200,255)
+moneybag:SetColor(Color(200,255,200,255))
 moneybag:GetTable().MoneyBag = true;
 moneybag:GetTable().Amount = 1000000
 local phys = moneybag:GetPhysicsObject()

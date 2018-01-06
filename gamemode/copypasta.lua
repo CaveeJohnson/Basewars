@@ -443,28 +443,4 @@ local function CreateContentPanel()
 	local ctrl = vgui.CreateFromTable( CreationSheet )
 	return ctrl
 end
-
-/*---------------------------------------------------------
-   Name: BunkMenu = this clears the menuns we dont need, but are part of sandbox.
----------------------------------------------------------*/
-local function BunkMenu()
-	return
-end
-
---if not LocalPlayer():IsSuperAdmin() then
-spawnmenu.AddCreationTab( "Entities", BunkMenu, "", 50 )
---end
-
---if not LocalPlayer():IsSuperAdmin() then
-spawnmenu.AddCreationTab( "Vehicles", BunkMenu, "", 50 )
---end
-
---if not LocalPlayer():IsSuperAdmin() then
-spawnmenu.AddCreationTab( "NPCs", BunkMenu, "", 50 )
---end
-
---if not LocalPlayer():IsSuperAdmin() then
-spawnmenu.AddCreationTab( "Weapons", BunkMenu, "", 50 )
---end
-
-spawnmenu.AddCreationTab( "Base War Buy Menu", CreateContentPanel, "gui/silkicons/brick_add", 50 )
+spawnmenu.AddCreationTab( "Base War Buy Menu", CreateContentPanel, "icon16/brick_add.png", 50 )

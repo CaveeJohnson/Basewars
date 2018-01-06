@@ -12,7 +12,7 @@ function ENT:Initialize()
 
 	self.Owner = self.Entity:GetOwner()
 
-	if !ValidEntity(self.Owner) then
+	if !IsValid(self.Owner) then
 		self:Remove()
 		return
 	end
@@ -64,7 +64,7 @@ end
 ---------------------------------------------------------*/
 function ENT:Impact(sent, normal, pos)
 
-	if not ValidEntity(self) then
+	if not IsValid(self) then
 		return
 	end
 
@@ -97,11 +97,11 @@ function ENT:Impact(sent, normal, pos)
 		util.Effect("effect_mad_shotgunsmoke", effectdata)
 	end
 
-	if ValidEntity(sent) then
+	if IsValid(sent) then
 		info = DamageInfo()
 			info:SetAttacker(self.Owner)
 			info:SetInflictor(self)
-			info:SetDamageType(DMG_GENERIC | DMG_SHOCK)
+			info:SetDamageType(bit.bor(DMG_GENERIC, DMG_SHOCK))
 			info:SetDamage(100)
 			info:SetMaxDamage(100)
 			info:SetDamageForce(tr.HitNormal * 10)
@@ -121,7 +121,7 @@ function ENT:Impact(sent, normal, pos)
 	self:SetPos(pos - normal * 10)
 	self:SetAngles(normal:Angle())
 	
-	if not ValidEntity(sent) then
+	if not IsValid(sent) then
 		self:GetPhysicsObject():EnableMotion(false)
 	end
 

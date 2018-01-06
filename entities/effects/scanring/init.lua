@@ -8,7 +8,7 @@ function EFFECT:Init( data )
 	self.RingCenter = data:GetOrigin()
 	self.MaxRingRadius = data:GetRadius()
 	
-	WorldSound( "buttons/button17.wav", self.RingCenter, 140, 160 )
+	sound.Play( "buttons/button17.wav", self.RingCenter, 140, 160 )
 	
 	self.Spawntime = CurTime()
 	self.RingRadius = 0

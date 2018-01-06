@@ -147,7 +147,7 @@ function SWEP:PrimaryAttack()
 		self.Owner:ViewPunch(Angle(math.Rand(-20, -35), math.Rand(0, 0), math.Rand(0, 0)))	
 	end
 
-	if ((SinglePlayer() and SERVER) or CLIENT) then
+	if ((game.SinglePlayer() and SERVER) or CLIENT) then
 		self.Weapon:SetNetworkedFloat("LastShootTime", CurTime())
 	end
 

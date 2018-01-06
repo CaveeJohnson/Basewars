@@ -19,7 +19,7 @@ local function load_prop_physics( class, mdl, pos, ang, moveable, color, skin, s
 		ent:SetPos( pos )
 		ent:SetAngles( ang )
 		print( color )
-		ent:SetColor( color.r, color.g, color.b, color.a )
+		ent:SetColor(Color( color.r, color.g, color.b, color.a ))
 		ent:SetSkin( skin )
 		ent:Spawn()
 		ent:Activate()
@@ -64,12 +64,12 @@ function GM:LoadPreviousEntData()
 	ErrorNoHalt( "LOADING PREVIOUS ENT DATA\n" )
 	ErrorNoHalt( "-------------------------\n" )
 	
-	if( !file.Exists( "ServerEntData.txt" ) ) then
+	if( !file.Exists( "ServerEntData.txt", "DATA" ) ) then
 		ErrorNoHalt( "\tCannot load Previous Entity Data: Does not Exist\n" )
 		return
 	end
 	
-	local fileRead = file.Read( "ServerEntData.txt" )
+	local fileRead = file.Read( "ServerEntData.txt", "DATA" )
 	local entDataTable = glon.decode( fileRead )
 	if( !entDataTable ) then
 		ErrorNoHalt( "\tENTDATA: Corrupted glon\n" )

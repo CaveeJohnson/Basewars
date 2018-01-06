@@ -34,7 +34,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Entity:GetOwner())==false) then
+	if (IsValid(self.Entity:GetOwner())==false) then
 		self.Entity:Remove()
 	end
 	if (self.GoofyTiem < CurTime()-.25) then
@@ -67,7 +67,7 @@ function ENT:PhysicsUpdate()
 		trace.endpos = self.Entity:GetPos()
 		trace.filter = {self.Entity, self.Entity:GetOwner()}
 	trace = util.TraceLine(trace)
-	if (trace.Hit && (ValidEntity(trace.Entity) && trace.Entity:GetClass()!="shot_rocket")) || (trace.Hit && !ValidEntity(trace.Entity)) then self.DidHit=true end
+	if (trace.Hit && (IsValid(trace.Entity) && trace.Entity:GetClass()!="shot_rocket")) || (trace.Hit && !IsValid(trace.Entity)) then self.DidHit=true end
 	if (self.DidHit == true) then
 		if (self.Upgraded) then
 			util.BlastDamage( self.Entity, self.Entity:GetOwner(), self.Entity:GetPos(), 310, 30 )

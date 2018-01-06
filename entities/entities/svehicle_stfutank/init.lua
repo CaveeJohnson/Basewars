@@ -614,7 +614,7 @@ function ENT:Explode()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Pod) && ValidEntity(self.Pod:GetDriver()) && self.Pod:GetDriver():IsPlayer()) then
+	if (IsValid(self.Pod) && IsValid(self.Pod:GetDriver()) && self.Pod:GetDriver():IsPlayer()) then
 		// so the tank can actually move around after not being driven for a bit
 		local phys = self.Entity:GetPhysicsObject()
 		phys:Wake()
@@ -653,7 +653,7 @@ function ENT:Think()
 			self.GoTurn = 0
 			self:SetForceT(0)
 		end
-		if (ValidEntity(self.GunCore)) then
+		if (IsValid(self.GunCore)) then
 			local tankangles = self.Entity:GetAngles()
 			tankangles:RotateAroundAxis(tankangles:Right(), -90)
 			tankangles:RotateAroundAxis(tankangles:Forward(), -tankangles.r)
@@ -684,7 +684,7 @@ function ENT:Think()
 		self.GoTurn = 0
 		self:SetForceT(0)
 	end
-	if (ValidEntity(self.GunCore)) then
+	if (IsValid(self.GunCore)) then
 		if self.LastFired+1<CurTime() && self.LoadStage==0 then
 			self.LoadStage=1
 			self.GunCore:EmitSound(Sound("Town.d1_town_04_metal_solid_strain4"))
@@ -699,13 +699,13 @@ function ENT:Think()
 end
 
 function ENT:Use(ply, caller)
-	if ValidEntity(self.Pod) then
+	if IsValid(self.Pod) then
 		ply:EnterVehicle(self.Pod)
 	end
 end
 
 function ENT:GetPod()
-	if (ValidEntity(self.Pod)) then
+	if (IsValid(self.Pod)) then
 		return self.Pod
 	else
 		return false
@@ -722,23 +722,23 @@ function ENT:OnRemove()
 	self.sound_load:Stop()
 	self.sound_lock:Stop()
 	
-	if ValidEntity(self.Engine) then
+	if IsValid(self.Engine) then
 		self.Engine:Remove()
 	end
-	if ValidEntity(self.Body) then
+	if IsValid(self.Body) then
 		self.Body:Remove()
 	end
-	if ValidEntity(self.Weight) then
+	if IsValid(self.Weight) then
 		self.Weight:Remove()
 	end
-	if ValidEntity(self.Pod) then
+	if IsValid(self.Pod) then
 		self.Pod:Remove()
 	end
 	for i=1, 8, 1 do
-		if ValidEntity(self.Plates[i]) then
+		if IsValid(self.Plates[i]) then
 			self.Plates[i]:Remove()
 		end
-		if ValidEntity(self.Wheels[i]) then
+		if IsValid(self.Wheels[i]) then
 			self.Wheels[i]:Remove()
 		end
 	end
@@ -779,7 +779,7 @@ function ENT:FireShell()
 	local object = ents.Create("shot_tankshell")
 	local firingangle = self.GunCore:GetAngles()
 	firingangle:RotateAroundAxis(firingangle:Right(), -90)
-	if ValidEntity(object) then	
+	if IsValid(object) then	
 		
 		object:SetOwner(self.Driver)
 		object:SetPos(gunoffset+self.Entity:GetPos())
@@ -830,9 +830,9 @@ end
 
 function ENT:BlowRightTheFuckUp(destroyer)
 	self.sound_idle:Stop()
-	if ValidEntity(self.Pod) then
+	if IsValid(self.Pod) then
 		local driver = self.Pod:GetDriver()
-		if ValidEntity(driver) then
+		if IsValid(driver) then
 			// kill their ass.
 			driver:TakeDamage(1000000, destroyer, self.Entity)
 		end
@@ -840,18 +840,18 @@ function ENT:BlowRightTheFuckUp(destroyer)
 	self.Entity:Explode()
 	timer.Create(tostring(self.Entity).."Explodeeffect", 0.15, math.random(3,5), self.Explode, self) 
 	for i=1,8,1 do
-		if (ValidEntity(self.Wheels[i])) then
+		if (IsValid(self.Wheels[i])) then
 			constraint.RemoveConstraints(self.Wheels[i], "AdvBallsocket")
 		end
 	end
 	timer.Create(tostring(self.Entity).."Pusheffect", 0.1, 1, self.PushWheels, self) 
-	if (ValidEntity(self.Pod)) then
+	if (IsValid(self.Pod)) then
 		self.Pod:Fire("kill","",0.1)
 	end
-	if (ValidEntity(self.GunBase)) then
+	if (IsValid(self.GunBase)) then
 		self.GunBase:Remove()
 	end
-	if (ValidEntity(self.GunCore)) then
+	if (IsValid(self.GunCore)) then
 		self.GunCore:Remove()
 	end
 	self.Fire1:Fire("StartFire")
@@ -866,7 +866,7 @@ end
 function ENT:PushWheels()
 	local entpos = self.Entity:GetPos()
 	for i=1,8,1 do
-		if (ValidEntity(self.Wheels[i])) then
+		if (IsValid(self.Wheels[i])) then
 			local forceang = self.Wheels[i]:GetPos()-entpos
 			self.Wheels[i]:GetPhysicsObject():SetVelocity(forceang:Angle():Forward()*200)
 		end
@@ -896,7 +896,7 @@ function ENT:PhysicsUpdate(phys)
 	
 	// every step of the way, we have to put tankangles inside of Angle() because it wants to rotate the original for no damn reason.
 	
-	if (ValidEntity(self.Plates[1])) then
+	if (IsValid(self.Plates[1])) then
 		local plate1offset = tankangles:Forward()*-33.82+tankangles:Right()*-59.47+tankangles:Up()*12.14
 		local plate1angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate1angles:RotateAroundAxis(plate1angles:Right(), -67.5)
@@ -906,7 +906,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[1]:SetAngles(plate1angles)
 	end
 	
-	if (ValidEntity(self.Plates[2])) then
+	if (IsValid(self.Plates[2])) then
 		local plate2offset = tankangles:Forward()*146.18+tankangles:Right()*-59.47+tankangles:Up()*12.14
 		local plate2angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate2angles:RotateAroundAxis(plate2angles:Right(), 67.5)
@@ -915,7 +915,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[2]:SetAngles(plate2angles)
 	end
 	
-	if (ValidEntity(self.Plates[3])) then
+	if (IsValid(self.Plates[3])) then
 		local plate3offset = tankangles:Forward()*146.18+tankangles:Right()*60.53+tankangles:Up()*12.14
 		local plate3angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate3angles:RotateAroundAxis(plate3angles:Right(), 67.5)
@@ -924,7 +924,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[3]:SetAngles(plate3angles)
 	end
 	
-	if (ValidEntity(self.Plates[4])) then
+	if (IsValid(self.Plates[4])) then
 		local plate4offset = tankangles:Forward()*86.59+tankangles:Right()*-59.52+tankangles:Up()*23.78
 		local plate4angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate4angles:RotateAroundAxis(plate4angles:Right(), 90)
@@ -934,7 +934,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[4]:SetAngles(plate4angles)
 	end
 	
-	if (ValidEntity(self.Plates[5])) then
+	if (IsValid(self.Plates[5])) then
 		local plate5offset = tankangles:Forward()*26.59+tankangles:Right()*-59.52+tankangles:Up()*23.78
 		local plate5angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate5angles:RotateAroundAxis(plate5angles:Right(), 90)
@@ -943,7 +943,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[5]:SetAngles(plate5angles)
 	end
 	
-	if (ValidEntity(self.Plates[6])) then
+	if (IsValid(self.Plates[6])) then
 		local plate6offset = tankangles:Forward()*86.59+tankangles:Right()*60.48+tankangles:Up()*23.78
 		local plate6angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate6angles:RotateAroundAxis(plate6angles:Right(), 90)
@@ -953,7 +953,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[6]:SetAngles(plate6angles)
 	end
 	
-	if (ValidEntity(self.Plates[7])) then
+	if (IsValid(self.Plates[7])) then
 		local plate7offset = tankangles:Forward()*26.59+tankangles:Right()*60.48+tankangles:Up()*23.78
 		local plate7angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate7angles:RotateAroundAxis(plate7angles:Right(), 90)
@@ -963,7 +963,7 @@ function ENT:PhysicsUpdate(phys)
 		self.Plates[7]:SetAngles(plate7angles)
 	end
 	
-	if (ValidEntity(self.Plates[8])) then
+	if (IsValid(self.Plates[8])) then
 		local plate8offset = tankangles:Forward()*-33.82+tankangles:Right()*60.53+tankangles:Up()*12.14
 		local plate8angles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		plate8angles:RotateAroundAxis(plate8angles:Right(), -67.5)
@@ -976,7 +976,7 @@ function ENT:PhysicsUpdate(phys)
 	// front body of the tank.
 	//Body:SetPos( SpawnPos + Vector(105,-1,80.94) )
 	//Body:SetAngles(Angle(-90.00,0.00,180.00))
-	if (ValidEntity(self.Body)) then
+	if (IsValid(self.Body)) then
 		local bodyoffset = tankangles:Forward()*105+tankangles:Right()*1
 		local bodyangles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		bodyangles:RotateAroundAxis(bodyangles:Right(), 90)
@@ -987,7 +987,7 @@ function ENT:PhysicsUpdate(phys)
 	
 	// the weak point of the tank, the engine. blowing this up kills it much faster than killing each of the armor plates.
 	
-	if (ValidEntity(self.Engine)) then
+	if (IsValid(self.Engine)) then
 		local engineoffset = tankangles:Forward()*-57+tankangles:Right()*8+tankangles:Up()*-2.38
 		local engineangles = Angle(tankangles.p, tankangles.y, tankangles.r)
 		engineangles:RotateAroundAxis(engineangles:Right(), -90)

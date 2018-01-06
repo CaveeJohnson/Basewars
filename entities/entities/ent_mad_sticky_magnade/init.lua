@@ -12,7 +12,7 @@ function ENT:Initialize()
 
 	self.Owner = self.Entity:GetOwner()
 
-	if !ValidEntity(self.Owner) then
+	if !IsValid(self.Owner) then
 		self:Remove()
 		return
 	end

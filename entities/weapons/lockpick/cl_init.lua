@@ -6,6 +6,6 @@ SWEP.SlotPos			= 1							// Position in the slot
 
 
 // Override this in your SWEP to set the icon in the weapon selection
-if (file.Exists("../materials/weapons/weapon_mad_fists.vmt")) then
+if (file.Exists("materials/weapons/weapon_mad_fists.vmt", "GAME")) then
 	SWEP.WepSelectIcon	= surface.GetTextureID("weapons/weapon_mad_fists")
 end

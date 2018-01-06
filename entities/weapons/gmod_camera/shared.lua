@@ -65,7 +65,7 @@ function SWEP:PrimaryAttack()
 	self:DoShootEffect()
 	
 	// If we're multiplayer this can be done totally clientside
-	if (!SinglePlayer() && SERVER) then return end
+	if (!game.SinglePlayer() && SERVER) then return end
 	if (CLIENT && !IsFirstTimePredicted()) then return end
 	
 	self.Owner:ConCommand( "jpeg" )

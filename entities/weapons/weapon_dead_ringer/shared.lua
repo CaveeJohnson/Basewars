@@ -133,7 +133,7 @@ if p:GetNWBool("Dead") == true then
 p:SetNWBool(	"Status",			0)
 p:GetViewModel():SetMaterial("")
 p:SetMaterial("")
-p:SetColor(255,255,255,255)
+p:SetColor(Color(255,255,255,255))
 end
 p:SetNWBool(	"Status",			0)
 p:SetNWBool(	"Dead",			false)
@@ -159,7 +159,7 @@ local ent = ents.Create("deadringer")
 ent:SetOwner(self.Owner) 
 ent:SetParent(self.Owner)
 ent:SetPos(self.Owner:GetPos())
-ent:SetColor(self.Owner:GetColor())
+ent:SetColor(Color(self.Owner:GetColor()))
 ent:SetMaterial(self.Owner:GetMaterial())
 ent:Spawn()	
 end
@@ -209,7 +209,8 @@ end
 ---------------------------------
 if SERVER then
 
-function checkifwehaveourdr(ent, inflictor, attacker, amount, dmginfo)
+function checkifwehaveourdr(ent, dmginfo)
+	local inflictor, attacker, amount = dmginfo:GetInflictor(), dmginfo:GetAttacker(), dmginfo:GetDamage()
 local getdmg = dmginfo:GetDamage()
 local reducedmg = getdmg * REDUCEDAMAGE
 	if ent:IsPlayer() then
@@ -244,7 +245,7 @@ local reducedmg = getdmg * REDUCEDAMAGE
 			dmginfo:SetDamage(getdmg - reducedmg )
 			p:fakedeath()
 			-- if npc has weapon (eg: metrocop with stunstick) then inflictor = npc's weapon
-			if ValidEntity(attacker:GetActiveWeapon()) then
+			if IsValid(attacker:GetActiveWeapon()) then
 			infl = attacker:GetActiveWeapon():GetClass()
 			-- else  (eg: zombie or hunter) then inflictor = attacker
 			else
@@ -384,7 +385,7 @@ function meta:fakedeath()
 self:SetNWBool("Dead", true)
 self:SetNWBool("CanAttack", false)
 self:SetNWBool("Status", 3)
-self:SetColor(255,255,255,0)
+self:SetColor(Color(255,255,255,0))
 
 ---------------------------
 --------"corpse"-------
@@ -453,7 +454,7 @@ function meta:uncloak()
 	self:SetNWBool(	"Status",			4)
 	self:GetViewModel():SetMaterial("")
 	self:SetMaterial("")
-	self:SetColor(255,255,255,255)
+	self:SetColor(Color(255,255,255,255))
 	
 	self:DrawWorldModel(true)
 
@@ -469,5 +470,5 @@ function meta:uncloak()
 end
 
 function SWEP:OnDrop()
-		self:SetColor(255,255,255,0)
+		self:SetColor(Color(255,255,255,0))
 end

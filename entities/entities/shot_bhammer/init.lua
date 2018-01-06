@@ -55,7 +55,7 @@ end
 
 function ENT:Think()
 	
-	if (ValidEntity(self.Entity:GetOwner())==false || CurTime()-self.GoofyTiem>20) then
+	if (IsValid(self.Entity:GetOwner())==false || CurTime()-self.GoofyTiem>20) then
 		local effectdata = EffectData()
 		effectdata:SetStart(self.Entity:GetPos())
 		effectdata:SetOrigin(self.Entity:GetPos())
@@ -77,7 +77,7 @@ function ENT:Think()
 		traceshit.endpos = self.Entity:GetPos()+self.Entity:GetAngles():Up()*60
 		traceshit.filter = { self.Entity, self.Hammar, self.Hammar2, self.Entity:GetOwner() }
 	traceshit = util.TraceLine(traceshit)
-	if ValidEntity(traceshit.Entity) then
+	if IsValid(traceshit.Entity) then
 		traceshit.Entity:TakeDamage(80, self.Entity:GetOwner(), self.Entity)
 	end
 end
@@ -101,7 +101,7 @@ function ENT:PhysicsUpdate()
 		traceshit.endpos = self.Entity:GetPos()+self.Entity:GetAngles():Up()*60
 		traceshit.filter = { self.Entity, self.Hammar, self.Hammar2, self.Entity:GetOwner() }
 	traceshit = util.TraceLine(traceshit)
-	if ValidEntity(traceshit.Entity) then
+	if IsValid(traceshit.Entity) then
 		traceshit.Entity:TakeDamage(80, self.Entity:GetOwner(), self.Entity)
 	end
 	if (self.DidHit == true) then

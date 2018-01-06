@@ -17,7 +17,7 @@ function ENT:Initialize()
 end
 	function ENT:Think()
 		local player = self:GetOwner() 
-		self:SetColor(player:GetColor())
+		self:SetColor(Color(player:GetColor()))
 		self:SetMaterial(player:GetMaterial())
 end 
 end  

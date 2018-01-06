@@ -15,7 +15,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
-	self.Entity:SetColor(0, 0, 0, 1)
+	self.Entity:SetColor(Color(0, 0, 0, 1))
 
 	self.Dish2 = ents.Create("prop_dynamic_override")
 	self.Dish2:SetModel( "models/props_c17/FurnitureWashingmachine001a.mdl" )
@@ -43,7 +43,7 @@ end
 
 function ENT:giveMoney()
 	local ply = self.Owner
-	if(ValidEntity(ply) && !self.Inactive && self.Entity:IsPowered()) then
+	if(IsValid(ply) && !self.Inactive && self.Entity:IsPowered()) then
 		// ply:AddMoney( 25 );
 
 		local trace = { }
@@ -64,7 +64,7 @@ function ENT:giveMoney()
 		moneybag:SetPos( tr.HitPos );
 		moneybag:SetAngles(self.Entity:GetAngles())
 		moneybag:Spawn();
-		moneybag:SetColor(200,255,200,255)
+		moneybag:SetColor(Color(200,255,200,255))
 		moneybag:SetMoveType( MOVETYPE_VPHYSICS )
 		moneybag:GetTable().MoneyBag = true;
 		moneybag:GetTable().Amount = amount
@@ -82,14 +82,14 @@ function ENT:shutOff()
 	self.Inactive = true
 	Notify( ply, 1, 3, "NOTICE: A MONEY PRINTER HAS GONE INACTIVE" );
 	Notify( ply, 1, 3, "PRESS USE ON IT TO CONTINUE GETTING MONEY" );
-	self.Dish2:SetColor(255,0,0,255)
+	self.Dish2:SetColor(Color(255,0,0,255))
 end
 function ENT:notifypl()
 	self.NearInact = true
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A MONEY PRINTER IS ABOUT TO GO INACTIVE" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO PREVENT THIS" );
-	self.Dish2:SetColor(255,150,150,255)
+	self.Dish2:SetColor(Color(255,150,150,255))
 end
 
 function ENT:Use(activator,caller)
@@ -111,13 +111,13 @@ function ENT:Reload()
 	timer.Create( tostring(self.Entity) .. "notifyoff", 480, 1, self.notifypl, self)
 	self.Inactive = false
 	self.NearInact = false
-	self.Dish2:SetColor(255,255,255,255)
+	self.Dish2:SetColor(Color(255,255,255,255))
 	local drugPos = self.Entity:GetPos()
 	self.Entity:SetNWBool("sparking",false)
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 end
@@ -127,7 +127,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxPrinter=ply:GetTable().maxPrinter - 1
 	end
 end

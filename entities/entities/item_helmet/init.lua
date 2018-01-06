@@ -22,7 +22,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
-	self.Entity:SetColor(150,140,100,255)
+	self.Entity:SetColor(Color(150,140,100,255))
 	local phys = self.Entity:GetPhysicsObject()
 	if(phys:IsValid()) then phys:Wake() end
 	self.Time = CurTime()

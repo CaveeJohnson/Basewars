@@ -7,7 +7,7 @@ SWEP.SlotPos			= 1							// Position in the slot
 SWEP.Ghost 				= NULL
 
 // Override this in your SWEP to set the icon in the weapon selection
-if (file.Exists("../materials/weapons/weapon_mad_charge.vmt")) then
+if (file.Exists("materials/weapons/weapon_mad_charge.vmt", "GAME")) then
 	SWEP.WepSelectIcon	= surface.GetTextureID("weapons/weapon_mad_charge")
 end
 
@@ -38,8 +38,8 @@ function SWEP:Think()
 		trace.HitNormal.z = -trace.HitNormal.z
 		self.Ghost:SetAngles(trace.HitNormal:Angle() - Angle(270, 180, 180))
 
-		self.Ghost:SetColor(255, 255, 255, 100)
+		self.Ghost:SetColor(Color(255, 255, 255, 100))
 	else
-		self.Ghost:SetColor(255, 255, 255, 0)
+		self.Ghost:SetColor(Color(255, 255, 255, 0))
 	end
 end

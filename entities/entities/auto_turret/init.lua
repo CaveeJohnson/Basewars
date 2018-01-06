@@ -67,7 +67,7 @@ function ENT:OnTakeDamage(dmg)
 	local damage = dmg:GetDamage()
 	local attacker=dmg:GetAttacker()
 	local inflictor=dmg:GetInflictor()
-	if !dmg:IsExplosionDamage() && ValidEntity(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
+	if !dmg:IsExplosionDamage() && IsValid(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
 		damage = damage*drugeffect_armorpiercermod
 	end
 	if self.Entity:GetNWInt("damage")>0 then
@@ -128,7 +128,7 @@ end
 function ENT:Think()
 	
 	// Note: If you're overriding the next think time you need to return true
-	if (!ValidEntity(self.Owner)) then
+	if (!IsValid(self.Owner)) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime())
@@ -179,7 +179,7 @@ end
 function ENT:OnRemove()
 	timer.Destroy(tostring(self.Entity))
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxturret=ply:GetTable().maxturret - 1
 	end
 end

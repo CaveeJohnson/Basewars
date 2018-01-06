@@ -16,7 +16,7 @@ function Upgrade(ply, args)
 	trace.filter = ply;
 
 	local tr = util.TraceLine( trace );
-	if (!ValidEntity(tr.Entity)) then
+	if (!IsValid(tr.Entity)) then
 		return "";
 	end
 	local targent = tr.Entity
@@ -569,7 +569,7 @@ function BuyMethlab( ply,args )
 
 		ent.Owner = ply
 		ent:Spawn()
-		ent:SetColor(255, 255, 255, 255)
+		ent:SetColor(Color(255, 255, 255, 255))
 		ent:Activate()
 	end
 	return "";
@@ -674,7 +674,7 @@ function BuySpawn( ply )
             Notify( ply, 4, 3, "Dead men buy no spawn points.");
             return "";
         end
-	if ValidEntity(ply:GetTable().Spawnpoint) then
+	if IsValid(ply:GetTable().Spawnpoint) then
 		ply:GetTable().Spawnpoint:Remove()
 		Notify(ply,1,3, "Destroyed old spawnpoint to create this one.")
 	end
@@ -683,7 +683,7 @@ function BuySpawn( ply )
         local spawnpoint = ents.CreateEx( "spawnpoint" );
 		spawnpoint.Owner = ply
         spawnpoint:SetPos( ply:GetPos());
-		spawnpoint:SetColor(255, 255, 255, 254)
+		spawnpoint:SetColor(Color(255, 255, 255, 254))
 	ply:SetPos(ply:GetPos()+Vector(0,0,3))
 --	spawnpoint:SetAngles(Angle(0, 0, 0))
         spawnpoint:Spawn();
@@ -1734,7 +1734,7 @@ function BuyBronzePrinter( ply )
 		local druglab = ents.Create( "money_printer_bronze" );
 
 		druglab:SetMaterial( "models/shiny" )
-		druglab:SetColor(140, 120, 83, 255)
+		druglab:SetColor(Color(140, 120, 83, 255))
 		druglab:SetPos( tr.HitPos + tr.HitNormal*30);
 		druglab.Owner = ply
 		druglab:Spawn();
@@ -1766,7 +1766,7 @@ function BuySilverPrinter( ply )
 		local druglab = ents.Create( "money_printer_silver" );
 
 		druglab:SetMaterial( "models/shiny" )
-		druglab:SetColor(230, 232, 250, 255)
+		druglab:SetColor(Color(230, 232, 250, 255))
 		druglab:SetPos( tr.HitPos + tr.HitNormal*40);
 		druglab.Owner = ply
 		druglab:Spawn();
@@ -1799,7 +1799,7 @@ function BuyGoldPrinter( ply )
 		local druglab = ents.Create( "money_printer_gold" );
 
 		druglab:SetMaterial( "models/shiny" )
-		druglab:SetColor(255, 215, 0, 255)
+		druglab:SetColor(Color(255, 215, 0, 255))
 		druglab:SetPos( tr.HitPos + tr.HitNormal*40);
 		druglab.Owner = ply
 		druglab:Spawn();
@@ -1831,7 +1831,7 @@ function BuyPlatinumPrinter( ply )
 		local druglab = ents.Create( "money_printer_platinum" );
 
 		druglab:SetMaterial( "models/shiny" )
-		druglab:SetColor(229, 228, 226, 255)
+		druglab:SetColor(Color(229, 228, 226, 255))
 		druglab:SetPos( tr.HitPos + tr.HitNormal*50);
 		druglab.Owner = ply
 		druglab:Spawn();
@@ -1863,7 +1863,7 @@ function BuyDiamondPrinter( ply )
 		local druglab = ents.Create( "money_printer_diamond" );
 
 		druglab:SetMaterial( "models/shiny" )
-		druglab:SetColor(229, 228, 226, 255)
+		druglab:SetColor(Color(229, 228, 226, 255))
 		druglab:SetPos( tr.HitPos + tr.HitNormal*50);
 		druglab.Owner = ply
 		druglab:Spawn();
@@ -1876,7 +1876,7 @@ AddChatCommand( "/buydiamondprinter", BuyDiamondPrinter );
 function BuyNuclearPrinter( ply )
 local nuclearmax = false
 	for k,v in pairs( ents.FindByClass("money_printer_nuclear")) do
-		if ValidEntity(v) then
+		if IsValid(v) then
 			nuclearmax = true
 		end
 	end
@@ -1907,7 +1907,7 @@ local nuclearmax = false
 		local druglab = ents.Create( "money_printer_nuclear" );
 
 		druglab:SetPos( tr.HitPos + tr.HitNormal*70);
-		druglab:SetColor(255, 255, 255, 255)
+		druglab:SetColor(Color(255, 255, 255, 255))
 		druglab.Owner = ply
 		druglab:Spawn();
 			for k, v in pairs(player.GetAll()) do
@@ -1972,7 +1972,7 @@ function BuyPrinter( ply )
 --		Notify( ply, 0, 3, "You bought a Washing Machine Printer" );
 --		local druglab = ents.Create( "money_printer_washingmachine" );
 --
---		druglab:SetColor(140, 120, 83, 254)
+--		druglab:SetColor(Color(140, 120, 83, 254))
 --		druglab:SetPos( tr.HitPos + tr.HitNormal*148);
 --		druglab:Spawn();
 --	return "";

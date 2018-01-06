@@ -26,6 +26,6 @@ function ENT:Draw()
 		self.Alpha = math.Approach(self.Alpha, 255, 5)
 	end
 
-	self.Entity:SetColor(255, 255, 255, self.Alpha)
+	self.Entity:SetColor(Color(255, 255, 255, self.Alpha))
 	self.Entity:DrawModel()
 end

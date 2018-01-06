@@ -82,7 +82,7 @@ end
 
 function meta:NPCControl()
 	for k,v in pairs(self.NPCs) do
-		if ValidEntity(v) then
+		if IsValid(v) then
 			if !v:HasCondition(COND_SEE_HATE) && !v:HasCondition(COND_SEE_ENEMY) then
 				v:SetNPCState(1)
 			end
@@ -99,7 +99,7 @@ end
 
 function meta:UpgradeGun( gun, bool)
 	local weapon = self:GetWeapon(gun)
-	if !ValidEntity(weapon) then return end
+	if !IsValid(weapon) then return end
 	weapon:Upgrade(bool)
 end
 
@@ -475,7 +475,7 @@ end
 function GM:PlayerCanPickupWeapon( ply, wep )
 
 	if( ply:GetTable().Arrested) then return false; end
-	if wep:GetClass()=="weapon_worldslayer" && ValidEntity(ply:GetWeapon("weapon_worldslayer")) then return false end
+	if wep:GetClass()=="weapon_worldslayer" && IsValid(ply:GetWeapon("weapon_worldslayer")) then return false end
 
 	return true;
 
@@ -527,14 +527,14 @@ function GM:PlayerSpawn( ply )
 	
 	end
 	
-	if ( ValidEntity(ply:GetTable().Spawnpoint )  ) then 
+	if ( IsValid(ply:GetTable().Spawnpoint )  ) then 
     		local cspawnpos = ply:GetTable().Spawnpoint:GetPos()
 		local trace = { }
     			trace.start = cspawnpos+Vector(0,0,2)
 			trace.endpos = trace.start+Vector(0,0,16)
 			trace.filter = ply:GetTable().Spawnpoint
 		trace = util.TraceLine(trace)
-		if ValidEntity(trace.Entity) then
+		if IsValid(trace.Entity) then
 			local minge = player.GetByUniqueID(trace.Entity:GetVar("PropProtection"))
 			
 					if (tobool(trace.Entity:GetVar("PropProtection"))) then
@@ -719,7 +719,7 @@ function GM:PlayerDisconnected( ply )
 	timer.Destroy(IDSteam .. "SUPERDRUGDEFENSE")
 	timer.Destroy(IDSteam .. "SUPERDRUGWEAPMOD")
 	for k, v in pairs(player.GetAll()) do
-		if ValidEntity(v) then
+		if IsValid(v) then
 			v:ConCommand("bw_ally_pl"..ply:EntIndex().." 0\n")
 		end
 	end
@@ -798,7 +798,7 @@ end
 // copypasta from base gamemode
 
 function GM:PlayerDeathNotify( Victim, Inflictor, Attacker )
-	if (Inflictor:GetClass()=="env_physexplosion" || Inflictor:GetClass()=="env_fire") && ValidEntity(Inflictor:GetTable().attacker) then
+	if (Inflictor:GetClass()=="env_physexplosion" || Inflictor:GetClass()=="env_fire") && IsValid(Inflictor:GetTable().attacker) then
 		Attacker = Inflictor:GetTable().attacker
 	end
 	// Don't spawn for at least 3 seconds
@@ -815,7 +815,7 @@ function GM:PlayerDeathNotify( Victim, Inflictor, Attacker )
 	
 	if ( Inflictor && Inflictor == Attacker && ( Inflictor:IsNPC() || Inflictor:IsPlayer()) ) then
 		local weap = Inflictor:GetActiveWeapon()
-		if ValidEntity(weap) then
+		if IsValid(weap) then
 			local class=weap:GetClass()
 			if class=="weapon_stunstick" || class=="weapon_crowbar" || class=="weapon_pistol" || class=="weapon_357" || class=="weapon_smg1" || class=="weapon_ar2" || class=="weapon_shotgun" then
 				
@@ -828,7 +828,7 @@ function GM:PlayerDeathNotify( Victim, Inflictor, Attacker )
 	
 	// send the inflictor class independently in case the inflictor is not in client PVS
 	if (Attacker == Victim) then
-		if !ValidEntity(Inflictor) then Inflictor = Victim end
+		if !IsValid(Inflictor) then Inflictor = Victim end
 		umsg.Start( "PlrKilledSelf" )
 			umsg.Entity( Victim )
 			umsg.Entity( Inflictor )
@@ -874,9 +874,9 @@ end
 local function LimitReachedProcess( ply, str )
 
 	// Always allow in single player
-	if (SinglePlayer()) then return true end
+	if (game.SinglePlayer()) then return true end
 
-	local c = server_settings.Int( "sbox_max"..str, 0 )
+	local c = cvars.Number( "sbox_max"..str, 0 )
 	
 	if ( ply:GetCount( str ) < c || c < 0 ) then return true end 
 	

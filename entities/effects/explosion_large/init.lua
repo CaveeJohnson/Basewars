@@ -22,7 +22,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 160, 192 ) )
 				particle:SetRoll( math.Rand( 360, 480 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( math.Rand( 150, 255 ), math.Rand( 100, 150 ), 100 )
+				particle:SetColor(Color( math.Rand( 150, 255 )), math.Rand( 100, 150 ), 100 )
 				particle:VelocityDecay( false )
 			
 			end
@@ -39,7 +39,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 128, 160 ) )
 				particle:SetRoll( math.Rand( 360, 480 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( math.Rand( 150, 255 ), math.Rand( 100, 150 ), 100 )
+				particle:SetColor(Color( math.Rand( 150, 255 )), math.Rand( 100, 150 ), 100 )
 				particle:VelocityDecay( false )
 				
 			end
@@ -56,7 +56,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 128, 160 ) )
 				particle:SetRoll( math.Rand( 360,480 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( math.Rand( 150, 255 ), math.Rand( 100, 150 ), 100 )
+				particle:SetColor(Color( math.Rand( 150, 255 )), math.Rand( 100, 150 ), 100 )
 				particle:VelocityDecay( true )	
 				
 			end
@@ -73,7 +73,7 @@ function EFFECT:Init( data )
 			particle:SetEndSize( math.Rand( 192, 256 ) )
 			particle:SetRoll( math.Rand( 360, 480 ) )
 			particle:SetRollDelta( math.Rand( -1, 1 ) )
-			particle:SetColor( 170, 160, 160 )
+			particle:SetColor(Color( 170, 160, 160 ))
 			particle:VelocityDecay( false )
 		
 		end
@@ -90,7 +90,7 @@ function EFFECT:Init( data )
 			particle:SetEndSize( math.Rand( 192, 256 ) )
 			particle:SetRoll( math.Rand( 480, 540 ) )
 			particle:SetRollDelta( math.Rand( -1, 1 ) )
-			particle:SetColor( 170, 170, 170 )
+			particle:SetColor(Color( 170, 170, 170 ))
 			particle:VelocityDecay( false )
 			
 		end
@@ -108,7 +108,7 @@ function EFFECT:Init( data )
 			particle:SetEndSize( math.Rand( 192, 256 ) )
 			particle:SetRoll( math.Rand( 480, 540 ) )
 			particle:SetRollDelta( math.Rand( -1, 1 ) )
-			particle:SetColor( 170, 170, 170 )
+			particle:SetColor(Color( 170, 170, 170 ))
 			particle:VelocityDecay( false )
 			
 		end

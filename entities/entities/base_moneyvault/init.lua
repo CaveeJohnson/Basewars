@@ -7,7 +7,7 @@ function ENT:OnTakeDamage(dmg)
 	local damage = dmg:GetDamage()
 	local attacker=dmg:GetAttacker()
 	local inflictor=dmg:GetInflictor()
-	if !dmg:IsExplosionDamage() && ValidEntity(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
+	if !dmg:IsExplosionDamage() && IsValid(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
 		damage = damage*drugeffect_armorpiercermod
 	end
 	if self.Entity:GetNWInt("damage")>0 then

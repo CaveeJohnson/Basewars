@@ -48,7 +48,7 @@ function SWEP:PrimaryAttack()
 		if SERVER then
 		--	self.Owner:EmitSound("npc/metropolice/gear".. math.floor(math.Rand(1,7)) ..".wav")
 			trace.Entity:Fire("lock", "", 0) -- Lock the door immediately so it won't annoy people
-			timer.Simple(0.2, function(ply, sound) if ValidEntity(ply) then ply:EmitSound(sound) end end, self.Owner, self.Sound)
+			timer.Simple(0.2, function(ply, sound) if IsValid(ply) then ply:EmitSound(sound) end end, self.Owner, self.Sound)
 			
 			local RP = RecipientFilter()
 			RP:AddAllPlayers()
@@ -67,7 +67,7 @@ function SWEP:SecondaryAttack()
 		if SERVER then
 		--	self.Owner:EmitSound("npc/metropolice/gear".. math.floor(math.Rand(1,7)) ..".wav")
 			trace.Entity:Fire("unlock", "", 0)-- Unlock the door immediately so it won't annoy people
-			timer.Simple(0.2, function(ply, sound) if ValidEntity(ply) then ply:EmitSound(sound) end end, self.Owner, self.Sound)
+			timer.Simple(0.2, function(ply, sound) if IsValid(ply) then ply:EmitSound(sound) end end, self.Owner, self.Sound)
 			
 			umsg.Start("anim_keys", RP) 
 				umsg.Entity(self.Owner)
@@ -81,7 +81,7 @@ end
 SWEP.OnceReload = false
 function SWEP:Reload()
 	local trace = self.Owner:GetEyeTrace()
-	if not ValidEntity(trace.Entity) or (ValidEntity(trace.Entity) and ((not trace.Entity:IsDoor() and not trace.Entity:IsVehicle()) or self.Owner:EyePos():Distance(trace.HitPos) > 200)) then
+	if not IsValid(trace.Entity) or (IsValid(trace.Entity) and ((not trace.Entity:IsDoor() and not trace.Entity:IsVehicle()) or self.Owner:EyePos():Distance(trace.HitPos) > 200)) then
 		if not self.OnceReload then
 			if SERVER then Notify(self.Owner, 1, 3, "You need to be looking at a door/vehicle in order to bring up the menu") end
 			self.OnceReload = true

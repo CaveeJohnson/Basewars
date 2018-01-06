@@ -28,7 +28,7 @@ function ENT:Initialize()
 			particle:SetStartSize(2)
 			particle:SetEndSize(15)
 			particle:SetRoll(math.Rand(-5, 5))
-			particle:SetColor(180, 0, 0)
+			particle:SetColor(Color(180, 0, 0))
 		end)
 	end
 

@@ -39,7 +39,7 @@ function ENT:Initialize()
 	self.SnipeShield:SetParent(self.Entity)
 	self.SnipeShield:SetSolid(SOLID_NONE)
 	self.SnipeShield:SetMoveType(MOVETYPE_NONE)
-	self.SnipeShield:SetColor(255,255,255,0)
+	self.SnipeShield:SetColor(Color(255,255,255,0))
 	
 	self.SnipeShield2 = ents.Create("prop_dynamic_override")
 	self.SnipeShield2:SetModel( "models/Items/car_battery01.mdl" )
@@ -48,7 +48,7 @@ function ENT:Initialize()
 	self.SnipeShield2:SetParent(self.Entity)
 	self.SnipeShield2:SetSolid(SOLID_NONE)
 	self.SnipeShield2:SetMoveType(MOVETYPE_NONE)
-	self.SnipeShield2:SetColor(255,255,255,0)
+	self.SnipeShield2:SetColor(Color(255,255,255,0))
 	
 	self.SnipeShield3 = ents.Create("prop_dynamic_override")
 	self.SnipeShield3:SetModel( "models/Items/car_battery01.mdl" )
@@ -57,7 +57,7 @@ function ENT:Initialize()
 	self.SnipeShield3:SetParent(self.Entity)
 	self.SnipeShield3:SetSolid(SOLID_NONE)
 	self.SnipeShield3:SetMoveType(MOVETYPE_NONE)
-	self.SnipeShield3:SetColor(255,255,255,0)
+	self.SnipeShield3:SetColor(Color(255,255,255,0))
 	
 	self.SnipeShield4 = ents.Create("prop_dynamic_override")
 	self.SnipeShield4:SetModel( "models/Items/car_battery01.mdl" )
@@ -66,7 +66,7 @@ function ENT:Initialize()
 	self.SnipeShield4:SetParent(self.Entity)
 	self.SnipeShield4:SetSolid(SOLID_NONE)
 	self.SnipeShield4:SetMoveType(MOVETYPE_NONE)
-	self.SnipeShield4:SetColor(255,255,255,0)
+	self.SnipeShield4:SetColor(Color(255,255,255,0))
 
 	-------------Conducter
 	self.Armor = ents.Create("prop_dynamic_override")
@@ -75,9 +75,9 @@ function ENT:Initialize()
 	self.Armor:SetAngles(Angle(0,0,0))
 	self.Armor:SetParent(self.Entity)
 	self.Armor:SetSolid(SOLID_NONE)
-	self.Armor:SetColor(100,100,150,255)
+	self.Armor:SetColor(Color(100,100,150,255))
 	self.Armor:SetMoveType(MOVETYPE_NONE)
-	self.Armor:SetColor(255,255,255,0)
+	self.Armor:SetColor(Color(255,255,255,0))
 	
 	self.Armor2 = ents.Create("prop_dynamic_override")
 	self.Armor2:SetModel( "models/props_c17/utilityconducter001.mdl" )
@@ -85,9 +85,9 @@ function ENT:Initialize()
 	self.Armor2:SetAngles(Angle(0,0,0))
 	self.Armor2:SetParent(self.Entity)
 	self.Armor2:SetSolid(SOLID_NONE)
-	self.Armor2:SetColor(100,100,150,255)
+	self.Armor2:SetColor(Color(100,100,150,255))
 	self.Armor2:SetMoveType(MOVETYPE_NONE)
-	self.Armor2:SetColor(255,255,255,0)
+	self.Armor2:SetColor(Color(255,255,255,0))
 	
 	self.Armor3 = ents.Create("prop_dynamic_override")
 	self.Armor3:SetModel( "models/props_c17/utilityconducter001.mdl" )
@@ -95,9 +95,9 @@ function ENT:Initialize()
 	self.Armor3:SetAngles(Angle(0,0,0))
 	self.Armor3:SetParent(self.Entity)
 	self.Armor3:SetSolid(SOLID_NONE)
-	self.Armor3:SetColor(100,100,150,255)
+	self.Armor3:SetColor(Color(100,100,150,255))
 	self.Armor3:SetMoveType(MOVETYPE_NONE)
-	self.Armor3:SetColor(255,255,255,0)
+	self.Armor3:SetColor(Color(255,255,255,0))
 
 	self.Armor4 = ents.Create("prop_dynamic_override")
 	self.Armor4:SetModel( "models/props_c17/utilityconducter001.mdl" )
@@ -105,9 +105,9 @@ function ENT:Initialize()
 	self.Armor4:SetAngles(Angle(0,0,0))
 	self.Armor4:SetParent(self.Entity)
 	self.Armor4:SetSolid(SOLID_NONE)
-	self.Armor4:SetColor(100,100,150,255)
+	self.Armor4:SetColor(Color(100,100,150,255))
 	self.Armor4:SetMoveType(MOVETYPE_NONE)
-	self.Armor4:SetColor(255,255,255,0)
+	self.Armor4:SetColor(Color(255,255,255,0))
 
 	--models/props/de_tides/Vending_hat.mdl
 	
@@ -119,7 +119,7 @@ function ENT:Initialize()
 	self.Helmet:SetParent(self.Entity)
 	self.Helmet:SetSolid(SOLID_NONE)
 	self.Helmet:SetMoveType(MOVETYPE_NONE)
-	self.Helmet:SetColor(255,255,255,0)
+	self.Helmet:SetColor(Color(255,255,255,0))
 	     
 	self.Helmet2 = ents.Create("prop_dynamic_override")
 	self.Helmet2:SetModel( "models/props/de_tides/Vending_hat.mdl" )
@@ -128,7 +128,7 @@ function ENT:Initialize()
 	self.Helmet2:SetParent(self.Entity)
 	self.Helmet2:SetSolid(SOLID_NONE)
 	self.Helmet2:SetMoveType(MOVETYPE_NONE)
-	self.Helmet2:SetColor(255,255,255,0)
+	self.Helmet2:SetColor(Color(255,255,255,0))
 	     
 	self.Helmet3 = ents.Create("prop_dynamic_override")
 	self.Helmet3:SetModel( "models/props/de_tides/Vending_hat.mdl" )
@@ -137,7 +137,7 @@ function ENT:Initialize()
 	self.Helmet3:SetParent(self.Entity)
 	self.Helmet3:SetSolid(SOLID_NONE)
 	self.Helmet3:SetMoveType(MOVETYPE_NONE)
-	self.Helmet3:SetColor(255,255,255,0)
+	self.Helmet3:SetColor(Color(255,255,255,0))
 	     
 	self.Helmet4 = ents.Create("prop_dynamic_override")
 	self.Helmet4:SetModel( "models/props/de_tides/Vending_hat.mdl" )
@@ -146,7 +146,7 @@ function ENT:Initialize()
 	self.Helmet4:SetParent(self.Entity)
 	self.Helmet4:SetSolid(SOLID_NONE)
 	self.Helmet4:SetMoveType(MOVETYPE_NONE)
-	self.Helmet4:SetColor(255,255,255,0)
+	self.Helmet4:SetColor(Color(255,255,255,0))
 	--toolkit
 	
 	
@@ -156,9 +156,9 @@ function ENT:Initialize()
 	self.toolkit:SetAngles(Angle(0,0,0))
 	self.toolkit:SetParent(self.Entity)
 	self.toolkit:SetSolid(SOLID_NONE)
-	self.toolkit:SetColor(100,100,150,255)
+	self.toolkit:SetColor(Color(100,100,150,255))
 	self.toolkit:SetMoveType(MOVETYPE_NONE)
-	self.toolkit:SetColor(255,255,255,255)
+	self.toolkit:SetColor(Color(255,255,255,255))
 	
 	self.toolkit2 = ents.Create("prop_dynamic_override")
 	self.toolkit2:SetModel( "models/props_c17/tools_pliers01a.mdl" )
@@ -166,9 +166,9 @@ function ENT:Initialize()
 	self.toolkit2:SetAngles(Angle(0,0,0))
 	self.toolkit2:SetParent(self.Entity)
 	self.toolkit2:SetSolid(SOLID_NONE)
-	self.toolkit2:SetColor(100,100,150,255)
+	self.toolkit2:SetColor(Color(100,100,150,255))
 	self.toolkit2:SetMoveType(MOVETYPE_NONE)
-	self.toolkit2:SetColor(255,255,255,255)
+	self.toolkit2:SetColor(Color(255,255,255,255))
 	
 	self.toolkit3 = ents.Create("prop_dynamic_override")
 	self.toolkit3:SetModel( "models/props_lab/monitor01b.mdl" )
@@ -176,9 +176,9 @@ function ENT:Initialize()
 	self.toolkit3:SetAngles(Angle(0,0,0))
 	self.toolkit3:SetParent(self.Entity)
 	self.toolkit3:SetSolid(SOLID_NONE)
-	self.toolkit3:SetColor(100,100,150,255)
+	self.toolkit3:SetColor(Color(100,100,150,255))
 	self.toolkit3:SetMoveType(MOVETYPE_NONE)
-	self.toolkit3:SetColor(255,255,255,255)
+	self.toolkit3:SetColor(Color(255,255,255,255))
 
 	self.toolkit4 = ents.Create("prop_dynamic_override")
 	self.toolkit4:SetModel( "models/props_lab/monitor01b.mdl" )
@@ -186,9 +186,9 @@ function ENT:Initialize()
 	self.toolkit4:SetAngles(Angle(0,0,0))
 	self.toolkit4:SetParent(self.Entity)
 	self.toolkit4:SetSolid(SOLID_NONE)
-	self.toolkit4:SetColor(100,100,150,255)
+	self.toolkit4:SetColor(Color(100,100,150,255))
 	self.toolkit4:SetMoveType(MOVETYPE_NONE)
-	self.toolkit4:SetColor(255,255,255,255)
+	self.toolkit4:SetColor(Color(255,255,255,255))
 
 
 end
@@ -333,24 +333,24 @@ function ENT:Think()
 	end
 			if (upgradenum==1) and self.Dontcall1==false then
 		self.Dontcall1 = true
-		self.Helmet:SetColor(255,255,255,255)
-		self.Helmet2:SetColor(255,255,255,255)
-		self.Helmet3:SetColor(255,255,255,255)
-		self.Helmet4:SetColor(255,255,255,255)
+		self.Helmet:SetColor(Color(255,255,255,255))
+		self.Helmet2:SetColor(Color(255,255,255,255))
+		self.Helmet3:SetColor(Color(255,255,255,255))
+		self.Helmet4:SetColor(Color(255,255,255,255))
 		end
 			if (upgradenum==2) and self.Dontcall2==false then
 		self.Dontcall2 = true
-		self.Armor:SetColor(255,255,255,255)
-		self.Armor2:SetColor(255,255,255,255)
-		self.Armor3:SetColor(255,255,255,255)
-		self.Armor4:SetColor(255,255,255,255)
+		self.Armor:SetColor(Color(255,255,255,255))
+		self.Armor2:SetColor(Color(255,255,255,255))
+		self.Armor3:SetColor(Color(255,255,255,255))
+		self.Armor4:SetColor(Color(255,255,255,255))
 		end
 			if (upgradenum==3) and self.Dontcall3==false then
 		self.Dontcall3 = true
-		self.SnipeShield:SetColor(255,255,255,255)
-		self.SnipeShield2:SetColor(255,255,255,255)
-		self.SnipeShield3:SetColor(255,255,255,255)
-		self.SnipeShield4:SetColor(255,255,255,255)
+		self.SnipeShield:SetColor(Color(255,255,255,255))
+		self.SnipeShield2:SetColor(Color(255,255,255,255))
+		self.SnipeShield3:SetColor(Color(255,255,255,255))
+		self.SnipeShield4:SetColor(Color(255,255,255,255))
 		end
 	self.Entity:NextThink(CurTime()+0.1)
 	return true
@@ -360,7 +360,7 @@ end
 function ENT:OnRemove( )
 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxsupplytable=ply:GetTable().maxsupplytable - 1
 	end
 end

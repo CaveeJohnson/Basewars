@@ -138,11 +138,11 @@ function ccSetWeapon( ply, cmd, args )
     
 	guntype = tostring(args[2])
 	local tr = util.TraceLine( trace );
-	if (!ValidEntity(tr.Entity)) then
+	if (!IsValid(tr.Entity)) then
 		return 
 	end
 	local targent = tr.Entity
-    if !ValidEntity(ents.GetByIndex(args[1])) || (guntype!="laserbeam" && guntype!="laserrifle" && guntype!="grenadegun" && guntype!="plasma" && guntype!="worldslayer" && guntype!="resetbutton") then
+    if !IsValid(ents.GetByIndex(args[1])) || (guntype!="laserbeam" && guntype!="laserrifle" && guntype!="grenadegun" && guntype!="plasma" && guntype!="worldslayer" && guntype!="resetbutton") then
 		return 
 	end
 	local vault = ents.GetByIndex(args[1])
@@ -164,8 +164,8 @@ end
 concommand.Add( "setgunfactoryweapon", ccSetWeapon );
 
 function WeldControl(ent,ply)
-	if (ValidEntity(ply)) then
-		if ValidEntity(ent) then
+	if (IsValid(ply)) then
+		if IsValid(ent) then
 			ent:SetNWInt("welddamage", 150)
 		end
 		ply:GetTable().shitweldcount=ply:GetTable().shitweldcount-1
@@ -181,7 +181,7 @@ function ccSetRefineryMode( ply, cmd, args )
 		return 
 	end
 	mode = tostring(args[2])
-	if !ValidEntity(ents.GetByIndex(args[1])) || (mode!="money" && mode!="offense" && mode!="defense" && mode!="weapmod" && mode!="eject" && mode!="uber") then
+	if !IsValid(ents.GetByIndex(args[1])) || (mode!="money" && mode!="offense" && mode!="defense" && mode!="weapmod" && mode!="eject" && mode!="uber") then
 		return 
 	end
 	local vault = ents.GetByIndex(args[1])
@@ -201,10 +201,10 @@ concommand.Add( "setrefinerymode", ccSetRefineryMode );
 
 
 local function GetEntOwner(ent)
-	if !ValidEntity(ent) then return false end
+	if !IsValid(ent) then return false end
 	local owner = ent
 	if ent:GetVar("PropProtection")==nil then return false end
-	if ValidEntity(player.GetByUniqueID(ent:GetVar("PropProtection"))) then
+	if IsValid(player.GetByUniqueID(ent:GetVar("PropProtection"))) then
 		owner = player.GetByUniqueID(ent:GetVar("PropProtection"))
 	end
 	if owner!=ent then
@@ -224,7 +224,7 @@ end
 
 local function SetOwner(ent, ply)
 	// take no chances, check it here too.
-	if (ValidEntity(ent) && ValidEntity(ply) && ply:IsPlayer()) then
+	if (IsValid(ent) && IsValid(ply) && ply:IsPlayer()) then
 		ent:SetVar("PropProtection", ply:UniqueID() )
 		return true
 	else
@@ -234,7 +234,7 @@ end
 
 local originalCleanup = cleanup.Add
 function cleanup.Add(ply,type,ent)
-	if (ValidEntity(ply) && ply:IsPlayer() && ValidEntity(ent)) then
+	if (IsValid(ply) && ply:IsPlayer() && IsValid(ent)) then
 		SetOwner(ent, ply)
 	end
 	originalCleanup(ply,type,ent)

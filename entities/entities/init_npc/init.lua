@@ -14,7 +14,7 @@ include("shared.lua")
 --	self:GetPhysicsObject():EnableMotion(false)
 --
 --	
---	self:SetColor(0,0,0,1)
+--	self:SetColor(Color(0,0,0,1))
 --	
 --	self.prop = ents.Create("prop_dynamic")
 --	self.prop:SetPos(self:GetPos() + Vector(0,0,-5))

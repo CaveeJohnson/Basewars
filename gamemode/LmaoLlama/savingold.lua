@@ -19,7 +19,7 @@ local function load_prop_physics( class, mdl, pos, ang, moveable, color, skin, s
 		ent:SetPos( pos )
 		ent:SetAngles( ang )
 		print( color )
-		ent:SetColor( color.r, color.g, color.b, color.a )
+		ent:SetColor(Color( color.r, color.g, color.b, color.a ))
 		ent:SetSkin( skin )
 		ent:Spawn()
 		ent:Activate()

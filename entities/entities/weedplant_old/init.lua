@@ -71,7 +71,7 @@ function ENT:notifypl()
 	local ply = self.Owner
 	Notify( ply, 4, 3, "NOTICE: A PLANT NEEDS WATER" );
 	Notify( ply, 4, 3, "PRESS USE ON IT TO WATER IT" );
-	self.Entity:SetColor(255,150,0,255)
+	self.Entity:SetColor(Color(255,150,0,255))
 end
 
 function ENT:Explode()
@@ -86,9 +86,9 @@ function ENT:Use(activator,caller)
 	timer.Create( tostring(self.Entity) .. "notifyoff", 600, 1, self.notifypl, self)
 	self.Inactive = false
 	if self.Hemp then
-		self.Entity:SetColor(200,255,200,255)
+		self.Entity:SetColor(Color(200,255,200,255))
 	else
-		self.Entity:SetColor(255,255,255,255)
+		self.Entity:SetColor(Color(255,255,255,255))
 	end
 end
 
@@ -97,7 +97,7 @@ function ENT:createDrug()
 end
  
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	self.Entity:NextThink(CurTime()+0.1)
@@ -110,7 +110,7 @@ function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity) .. "fuckafkfags")
 	timer.Destroy(tostring(self.Entity) .. "notifyoff")
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxweed=ply:GetTable().maxweed - 1
 	end
 end
@@ -118,5 +118,5 @@ end
 function ENT:Worthless()
 	self.Hemp=true
 	self.Entity:SetNWInt("damage",40)
-	self.Entity:SetColor(200,255,200,255)
+	self.Entity:SetColor(Color(200,255,200,255))
 end

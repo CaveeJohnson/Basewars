@@ -39,40 +39,14 @@ AddCSLuaFile( "cl_msg.lua" )
 AddCSLuaFile( "shared.lua" );
 AddCSLuaFile( "cl_vgui.lua" );
 AddCSLuaFile( "cl_scoreboard.lua" );
-AddCSLuaFile( "scoreboard/admin_buttons.lua" );
-AddCSLuaFile( "scoreboard/player_frame.lua" );
-AddCSLuaFile( "scoreboard/player_infocard.lua" );
-AddCSLuaFile( "scoreboard/player_row.lua" );
-AddCSLuaFile( "scoreboard/scoreboard.lua" );
-AddCSLuaFile( "scoreboard/vote_button.lua" );
 AddCSLuaFile( "cl_helpvgui.lua" );
 AddCSLuaFile( "cl_menu.lua" );
 AddCSLuaFile( "copypasta.lua" );
-AddCSLuaFile( "buymenu_shipments.lua" );
-AddCSLuaFile( "LmaoLlama/simpleHud.lua" );
+AddCSLuaFile( "lmaollama/simpleHud.lua" );
 AddCSLuaFile( "sh_teammenu.lua" );
 AddCSLuaFile( "physables.lua" );
 
---Falco's prop protection
-local BlockedModelsExist = sql.QueryValue("SELECT COUNT(*) FROM FPP_BLOCKEDMODELS;") ~= false
-if not BlockedModelsExist then
-	sql.Query("CREATE TABLE IF NOT EXISTS FPP_BLOCKEDMODELS('model' TEXT NOT NULL PRIMARY KEY);")
-	include("FPP/FPP_DefaultBlockedModels.lua") -- Load the default blocked models
-end
-AddCSLuaFile("FPP/sh_CPPI.lua")
-AddCSLuaFile("FPP/sh_settings.lua")
-AddCSLuaFile("FPP/client/FPP_Menu.lua")
-AddCSLuaFile("FPP/client/FPP_HUD.lua")
-AddCSLuaFile("FPP/client/FPP_Buddies.lua")
-
-include("FPP/sh_settings.lua")
-include("FPP/sh_CPPI.lua")
-include("FPP/server/FPP_Settings.lua")
-include("FPP/server/FPP_Core.lua")
-include("FPP/server/FPP_Antispam.lua")
 include("physables.lua")
-include("language_sh.lua")
-
 
 //include( "help.lua" );
 
@@ -91,15 +65,13 @@ include( "util.lua" );
 include( "drugs.lua" );
 include( "admins.lua" );
 include( "admincc.lua" );
-include( "entity.lua" );
 include( "bannedprops.lua" );
 include( "commands.lua" );
 include( "hints.lua" );
 include( "vars.lua" );
 include( "rating.lua" );
 include("swep_fix.lua");
-include( "Extracrap.lua" );
-include( "propprotect/cl_init.lua" );
+include( "extracrap.lua" );
 CSFiles = { }
 
 LRP = { }
@@ -173,8 +145,8 @@ function GM:ShowHelp( ply )
 end
 
 
-GM.Name = "Basewars [RGaming]";
-GM.Author = "Original: Rickdark | WCA Orginal | Currently Fixing: Grondo4";
+GM.Name = "shitwars";
+GM.Author = "Original: hitler | Currently Fixing: satan";
 
 
 /*---------------------------------------------------------

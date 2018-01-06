@@ -592,7 +592,7 @@ function SWEP:ShootBulletInformation()
 			self.Owner:ViewPunch(Angle(math.Rand(-0.75, -1.0) * (CurrentRecoil * 2.5), math.Rand(-1, 1) * (CurrentRecoil * 2.5), 0))
 		end
 	// Player is moving
-	elseif self.Owner:KeyDown(IN_FORWARD | IN_BACK | IN_MOVELEFT | IN_MOVERIGHT) then
+	elseif self.Owner:KeyDown(bit.bor(IN_FORWARD, IN_BACK, IN_MOVELEFT, IN_MOVERIGHT)) then
 		// Player is aiming
 		if (self.Weapon:GetDTBool(1)) then
 			self:ShootBullet(CurrentDamage, CurrentRecoil / 2, self.Primary.NumShots, CurrentCone)
@@ -732,7 +732,7 @@ function SWEP:ShootEffects()
 	end
 
 	// Crosshair effect
-	if ((SinglePlayer() and SERVER) or CLIENT) then
+	if ((game.SinglePlayer() and SERVER) or CLIENT) then
 		self.Weapon:SetNetworkedFloat("LastShootTime", CurTime())
 	end
 end
@@ -860,7 +860,7 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 	end
 
 	// Recoil
-	if (not self.Owner:IsNPC()) and ((SinglePlayer() and SERVER) or (not SinglePlayer() and CLIENT)) then
+	if (not self.Owner:IsNPC()) and ((game.SinglePlayer() and SERVER) or (not game.SinglePlayer() and CLIENT)) then
 		local eyeangle 	= self.Owner:EyeAngles()
 		eyeangle.pitch 	= eyeangle.pitch - recoil
 		self.Owner:SetEyeAngles(eyeangle)
@@ -975,7 +975,7 @@ function SWEP:RicochetCallback(bouncenum, attacker, tr, dmginfo)
 	if (tr.MatType != MAT_METAL) then
 		if (SERVER) then
 			util.ScreenShake(tr.HitPos, 5, 0.1, 0.5, 64)
-			WorldSound("Bullets.DefaultNearmiss", tr.HitPos, 250, math.random(110, 180))
+			sound.Play("Bullets.DefaultNearmiss", tr.HitPos, 250, math.random(110, 180))
 		end
 
 		if self.Tracer == 1 or self.Tracer == 2 then

@@ -48,7 +48,7 @@ end
 function ENT:OnTakeDamage(dmg)
 	local damage = dmg:GetDamage()
 	local attacker=dmg:GetAttacker()
-	if !dmg:IsExplosionDamage() && ValidEntity(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
+	if !dmg:IsExplosionDamage() && IsValid(attacker) && attacker:IsPlayer() && attacker:GetTable().ArmorPiercered then
 		damage = damage*drugeffect_armorpiercermod
 	end
 	self.Entity:SetVar("damage",self.Entity:GetVar("damage") - damage)
@@ -95,7 +95,7 @@ function ENT:Use(activator,caller)
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:DropAllGuns()
 		self.Entity:Remove()
 	end
@@ -160,7 +160,7 @@ end
 function ENT:OnRemove( )
 	timer.Destroy(self.Entity) 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxvault=ply:GetTable().maxvault - 1
 	end
 	umsg.Start( "killgunvaultgui");

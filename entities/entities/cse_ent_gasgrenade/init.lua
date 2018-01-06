@@ -30,14 +30,14 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	if (self.solidify<CurTime()) then
 		self.SetOwner(self.Entity)
 	end
 	if self.timer < CurTime() then
-		if !ValidEntity(self.Bastardgas) && !self.Spammed then
+		if !IsValid(self.Bastardgas) && !self.Spammed then
 			self.Spammed = true
 			self.Bastardgas = ents.Create("env_smoketrail")
 			self.Bastardgas:SetPos(self.Entity:GetPos())
@@ -84,7 +84,7 @@ function ENT:Think()
 			end
 		end
 		if (self.timer+5<CurTime()) then
-			if ValidEntity(self.Bastardgas) then
+			if IsValid(self.Bastardgas) then
 				self.Bastardgas:Remove()
 			end
 		end

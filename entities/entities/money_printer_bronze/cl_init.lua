@@ -7,7 +7,7 @@ function ENT:Draw( bDontDrawModel )
 	local Ang = self:GetAngles()
 	
 	local owner = self.Owner
-	owner = (ValidEntity(owner) and owner:Nick()) or "unknown"
+	owner = (IsValid(owner) and owner:Nick()) or "unknown"
 	local upgrade = self.Entity:GetNWInt("upgrade")
 	
 	surface.SetFont("HUDNumber5")

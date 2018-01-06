@@ -67,7 +67,7 @@ local function DrawMessagem( self, k, v, i )
 	elseif v.type==4 then
 		textcolor = Color(150,0,0,255)
 	end
-	if LocalPlayer():GetInfoNum("bw_showmessages")==1 then
+	if LocalPlayer():GetInfoNum("bw_showmessages", 0)==1 then
 		draw.SimpleText( v.text, "MessageFont", x+1, y+1, Color(0,0,0,150), TEXT_ALIGN_LEFT )
 		draw.SimpleText( v.text, "MessageFont", x, y, textcolor, TEXT_ALIGN_LEFT )
 	end
@@ -75,7 +75,7 @@ end
 
 
 function GM:PaintMessages()
-	if LocalPlayer():GetInfoNum("bw_showmessages")==1 then
+	if LocalPlayer():GetInfoNum("bw_showmessages", 0)==1 then
 		if ScrW()>1000 then
 			draw.RoundedBox( 10, 10, 10, 570, 170, Color( 30, 30, 30, 100 ) )
 		else
@@ -106,22 +106,22 @@ function MsgManageMessages(msg)
 	local text = msg:ReadString()
 	local type = msg:ReadShort()
 	local time = msg:ReadShort()
-	if LocalPlayer():GetInfoNum("bw_showmessages")==nil then
+	if LocalPlayer():GetInfoNum("bw_showmessages", 0)==nil then
 		CreateClientConVar("bw_showmessages", 1, true, false)
 	end
-	if LocalPlayer():GetInfoNum("bw_shownotify")==nil then
+	if LocalPlayer():GetInfoNum("bw_shownotify", 0)==nil then
 		CreateClientConVar("bw_shownotify", 0, true, false)
 	end
-	if LocalPlayer():GetInfoNum("bw_messages_warningnotify")==nil then
+	if LocalPlayer():GetInfoNum("bw_messages_warningnotify", 0)==nil then
 		CreateClientConVar("bw_messages_warningnotify", 1, true, false)
 	end
-	if LocalPlayer():GetInfoNum("bw_messages_dontshowincome")==nil then
+	if LocalPlayer():GetInfoNum("bw_messages_dontshowincome", 0)==nil then
 		CreateClientConVar("bw_messages_dontshowincome", 0, true, false)
 	end
-	local mode = LocalPlayer():GetInfoNum("bw_showmessages")
-	local both = LocalPlayer():GetInfoNum("bw_shownotify")
-	local warn = LocalPlayer():GetInfoNum("bw_messages_warningnotify")
-	local inc = LocalPlayer():GetInfoNum("bw_messages_dontshowincome")
+	local mode = LocalPlayer():GetInfoNum("bw_showmessages", 0)
+	local both = LocalPlayer():GetInfoNum("bw_shownotify", 0)
+	local warn = LocalPlayer():GetInfoNum("bw_messages_warningnotify", 0)
+	local inc = LocalPlayer():GetInfoNum("bw_messages_dontshowincome", 0)
 	
 	if mode==0 then
 		GAMEMODE:AddNotify(text,type,time)

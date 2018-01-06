@@ -126,7 +126,7 @@ function GM:AddDeathNotice2( Victim, team1, Inflictor, Attacker, team2, inflicto
 	Death.left		= 	Victim
 	Death.right		= 	Attacker
 	Death.icon		=	Inflictor
-	if ValidEntity(inflictorent) then
+	if IsValid(inflictorent) then
 		Death.upgrade		=	tobool(inflictorent:GetNWBool("upgraded"))
 	else
 		Death.upgrade		=	false

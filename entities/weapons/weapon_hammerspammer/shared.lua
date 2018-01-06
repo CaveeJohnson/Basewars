@@ -73,7 +73,7 @@ function SWEP:PrimaryAttack()
 	if ( self.Owner:IsNPC() ) then return end
 
 	self.Owner:ViewPunch( Angle( math.Rand(-0.2,0.2) * self.Primary.Recoil, math.Rand(-0.2,0.2) *self.Primary.Recoil, 0 ) )
-	if ( (SinglePlayer() && SERVER) || CLIENT ) then
+	if ( (game.SinglePlayer() && SERVER) || CLIENT ) then
 		self.Weapon:SetNetworkedFloat( "LastShootTime", CurTime() )
 	end
 	if (self:Clip1()<=0) then
@@ -96,7 +96,7 @@ function SWEP:FireRocket( recoil )
 
 	local object = ents.Create("shot_bhammer")
 	// grenade_ar2
-	if ValidEntity(object) then	
+	if IsValid(object) then	
 		
 		object:SetOwner(self.Owner)
 		object:SetPos(self.Owner:GetPos()+self.Owner:GetAngles():Right()*40+Vector(0,0,65))
@@ -116,7 +116,7 @@ function SWEP:FireRocket( recoil )
 	if ( self.Owner:IsNPC() ) then return end
 	
 	// CUSTOM RECOIL !
-	if ( (SinglePlayer() && SERVER) || ( !SinglePlayer() && CLIENT ) ) then
+	if ( (game.SinglePlayer() && SERVER) || ( !game.SinglePlayer() && CLIENT ) ) then
 	
 		local eyeang = self.Owner:EyeAngles()
 		eyeang.pitch = eyeang.pitch - recoil

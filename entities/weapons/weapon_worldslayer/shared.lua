@@ -25,7 +25,7 @@ if ( CLIENT ) then
 	surface.CreateFont( "HalfLife2", ScreenScale( 60 ), 500, true, true, "HL2SelectIcons" )
 	killicon.AddFont( "shot_rocket", "HL2MPTypeDeath", "3", Color( 100, 100, 100, 255 ) )
 	
-	if (file.Exists("../materials/weapons/weapon_mad_rpg.vmt")) then
+	if (file.Exists("materials/weapons/weapon_mad_rpg.vmt", "GAME")) then
 		SWEP.WepSelectIcon	= surface.GetTextureID("weapons/weapon_mad_rpg")
 	end
 end
@@ -79,7 +79,7 @@ function SWEP:PrimaryAttack()
 	if ( self.Owner:IsNPC() ) then return end
 
 	self.Owner:ViewPunch( Angle( math.Rand(-0.2,0.2) * self.Primary.Recoil, math.Rand(-0.2,0.2) *self.Primary.Recoil, 0 ) )
-	if ( (SinglePlayer() && SERVER) || CLIENT ) then
+	if ( (game.SinglePlayer() && SERVER) || CLIENT ) then
 		self.Weapon:SetNetworkedFloat( "LastShootTime", CurTime() )
 	end
 	if (SERVER) then
@@ -102,7 +102,7 @@ function SWEP:FireRocket( recoil )
 
 	local object = ents.Create("worldslayer")
 	// grenade_ar2
-	if ValidEntity(object) then	
+	if IsValid(object) then	
 		
 		object:SetOwner(self.Owner)
 		object.Owner = self.Owner
@@ -120,7 +120,7 @@ function SWEP:FireRocket( recoil )
 	if ( self.Owner:IsNPC() ) then return end
 	
 	// CUSTOM RECOIL !
-	if ( (SinglePlayer() && SERVER) || ( !SinglePlayer() && CLIENT ) ) then
+	if ( (game.SinglePlayer() && SERVER) || ( !game.SinglePlayer() && CLIENT ) ) then
 	
 		local eyeang = self.Owner:EyeAngles()
 		eyeang.pitch = eyeang.pitch - recoil

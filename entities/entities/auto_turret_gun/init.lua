@@ -99,7 +99,7 @@ function ENT:Think()
 			/*
 			if v:IsPlayer() && self.Entity:GetOwner()!=v then
 				for l, w in pairs(self.Body:GetTable().AllyTable) do
-					if ValidEntity(w) && w==v then
+					if IsValid(w) && w==v then
 						isally = true
 					end
 				end
@@ -121,7 +121,7 @@ function ENT:Think()
 					traceshit.filter = { self.Body, v, self.Entity }
 					// traceshit.mask = COLLISION_GROUP_PLAYER
 				traceshit = util.TraceLine(traceshit)
-				if (ValidEntity(traceshit.Entity) && !traceshit.HitWorld) then
+				if (IsValid(traceshit.Entity) && !traceshit.HitWorld) then
 					if (traceshit.Entity:GetVar("PropProtection")!=false) then
 						local entowner = player.GetByUniqueID(traceshit.Entity:GetVar("PropProtection"))
 						if (entowner==v) then tracerun=true end
@@ -135,7 +135,7 @@ function ENT:Think()
 					traceshith.filter = { self.Body, v, self.Entity }
 					// traceshith.mask = COLLISION_GROUP_PLAYER
 				traceshith = util.TraceLine(traceshith)
-				if (ValidEntity(traceshith.Entity) && !traceshith.HitWorld) then
+				if (IsValid(traceshith.Entity) && !traceshith.HitWorld) then
 					if (traceshith.Entity:GetVar("PropProtection")!=false) then
 						local entowner = player.GetByUniqueID(traceshith.Entity:GetVar("PropProtection"))
 						if (entowner==v) then tracehrun=true end
@@ -149,7 +149,7 @@ function ENT:Think()
 					traceshitb.filter = { self.Body, v, self.Entity }
 					// traceshitb.mask = COLLISION_GROUP_PLAYER
 				traceshitb = util.TraceLine(traceshitb)
-				if (ValidEntity(traceshitb.Entity) && !traceshitb.HitWorld) then
+				if (IsValid(traceshitb.Entity) && !traceshitb.HitWorld) then
 					if (traceshitb.Entity:GetVar("PropProtection")!=false) then
 						local entowner = player.GetByUniqueID(traceshitb.Entity:GetVar("PropProtection"))
 						if (entowner==v) then tracebrun=true end
@@ -163,7 +163,7 @@ function ENT:Think()
 					traceshitbh.filter = { self.Body, v, self.Entity }
 					// traceshitbh.mask = COLLISION_GROUP_PLAYER
 				traceshitbh = util.TraceLine(traceshitbh)
-				if (ValidEntity(traceshitbh.Entity) && !traceshitbh.HitWorld) then
+				if (IsValid(traceshitbh.Entity) && !traceshitbh.HitWorld) then
 					if (traceshitbh.Entity:GetVar("PropProtection")!=false) then
 						local entowner = player.GetByUniqueID(traceshitbh.Entity:GetVar("PropProtection"))
 						if (entowner==v) then tracebhrun=true end

@@ -7,7 +7,7 @@ function EFFECT:Init( data )
 	self.FWEnt = data:GetEntity()
 	local vOffset = data:GetOrigin()
 	
-	if(vOffset) then WorldSound( "fireworks/firework_launch_"..math.random(1, 2)..".wav", vOffset, 160, 130 ) end
+	if(vOffset) then sound.Play( "fireworks/firework_launch_"..math.random(1, 2)..".wav", vOffset, 160, 130 ) end
 end
 
 	
@@ -32,7 +32,7 @@ function EFFECT:Think( )
 				particle:SetStartSize( math.Rand( 2, 5 ) )
 				particle:SetEndSize( math.Rand( 5, 8 ) )
 				particle:SetRoll( math.Rand( -0.2, 0.2 ) )
-				particle:SetColor( 255, 255, 255, 240)
+				particle:SetColor(Color( 255, 255, 255, 240))
 				particle:SetGravity( Vector( 0, 0, -400 ) )
 				
 				//P2

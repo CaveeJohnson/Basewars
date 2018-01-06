@@ -40,7 +40,7 @@ function EFFECT:Init( data )
 			particle:SetAirResistance( 400 )
 			particle:SetGravity( Vector(0,0,1) )
 			
-			particle:SetColor( Color.r, Color.g, Color.b )
+			particle:SetColor(Color( Color.r, Color.g, Color.b ))
 			
 			particle:SetCollide( false )
 			

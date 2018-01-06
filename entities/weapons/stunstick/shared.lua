@@ -105,7 +105,7 @@ end
 
  	local trace = self.Owner:GetEyeTrace();
 
- 	if( not ValidEntity(trace.Entity) ) then
+ 	if( not IsValid(trace.Entity) ) then
  		return;
 	end
 	
@@ -153,7 +153,7 @@ end
 
  	local trace = self.Owner:GetEyeTrace();
 	
- 	if( not ValidEntity(trace.Entity) ) then
+ 	if( not IsValid(trace.Entity) ) then
  		return;
 	end
 	

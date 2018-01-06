@@ -1,0 +1,14 @@
+"shitcodewars"
+{
+	"base"        "sandbox"
+	"title"       "shitcodewars"
+	"version"     "0"
+	"description" "Basewars 2011 shitcode edition."
+
+	"author_name" "satan"
+	"author_url"  "https://hell.com"
+
+	"hide"        "0"
+	"menusystem"  "1"
+	"selectable"  "1"
+}

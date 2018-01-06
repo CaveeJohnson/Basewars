@@ -40,11 +40,11 @@ function STFUTankHUDInfo()
 	for k, v in pairs(ents.FindByClass("svehicle_stfutank")) do
 		local driver = nil
 		local guncore = nil
-		if (ValidEntity(v)) then
+		if (IsValid(v)) then
 			driver = v:GetNWEntity("Driver")
 			guncore = v:GetNWEntity("GunCore")
 		end
-		if (ValidEntity(driver) && driver==LocalPlayer()) then
+		if (IsValid(driver) && driver==LocalPlayer()) then
 			
 			
 			// damagechart
@@ -58,7 +58,7 @@ function STFUTankHUDInfo()
 			local plate8 = v:GetNWEntity("Plate8")
 			local engine = v:GetNWEntity("Engine")
 			
-			if ValidEntity(engine) then
+			if IsValid(engine) then
 				local damage = engine:GetNWInt("damage")/10
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -84,7 +84,7 @@ function STFUTankHUDInfo()
 			5 7
 			1 8
 			*/
-			if ValidEntity(plate1) then
+			if IsValid(plate1) then
 				local damage = plate1:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -103,7 +103,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-125, scryl+110, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate2) then
+			if IsValid(plate2) then
 				local damage = plate2:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -122,7 +122,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-125, scryl+20, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate3) then
+			if IsValid(plate3) then
 				local damage = plate3:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -141,7 +141,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-60, scryl+20, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate4) then
+			if IsValid(plate4) then
 				local damage = plate4:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -160,7 +160,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-125, scryl+50, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate5) then
+			if IsValid(plate5) then
 				local damage = plate5:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -179,7 +179,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-125, scryl+80, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate6) then
+			if IsValid(plate6) then
 				local damage = plate6:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -198,7 +198,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-60, scryl+50, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate7) then
+			if IsValid(plate7) then
 				local damage = plate7:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -217,7 +217,7 @@ function STFUTankHUDInfo()
 				draw.RoundedBox( 0, scrxh-60, scryl+80, 25, 31, Color(0,0,0,150) )
 			end
 			
-			if ValidEntity(plate8) then
+			if IsValid(plate8) then
 				local damage = plate8:GetNWInt("damage")/2
 				local color = Color(0,150,0,250)
 				local color2 = Color(0,255,0,250)
@@ -237,7 +237,7 @@ function STFUTankHUDInfo()
 			end
 			
 			// crosshair
-			if (ValidEntity(guncore)) then
+			if (IsValid(guncore)) then
 				local gunoffset = guncore:GetForward()*200.784+guncore:GetRight()*-0.56+guncore:GetUp()*70.77
 				local firingangle = guncore:GetAngles()
 				firingangle:RotateAroundAxis(firingangle:Right(), -90)

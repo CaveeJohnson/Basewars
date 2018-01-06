@@ -99,7 +99,7 @@ function ENT:resupply()
 end
  
 function ENT:Think()
-	if (ValidEntity(self.Owner)!=true) then
+	if (IsValid(self.Owner)!=true) then
 		self.Entity:Remove()
 	end
 end
@@ -107,7 +107,7 @@ end
 function ENT:OnRemove( )
 	timer.Destroy(tostring(self.Entity)) 
 	local ply = self.Owner
-	if ValidEntity(ply) then
+	if IsValid(ply) then
 		ply:GetTable().maxdispensers=ply:GetTable().maxdispensers - 1
 	end
 	timer.Destroy(tostring(self.Entity) .. "resup")

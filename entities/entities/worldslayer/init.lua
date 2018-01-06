@@ -48,7 +48,7 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
-	if (ValidEntity(self.Owner)==false) then
+	if (IsValid(self.Owner)==false) then
 		self.Entity:Remove()
 	end
 	if (self.Armed==true) then
@@ -120,7 +120,7 @@ function ENT:Use(activator,caller)
 		else
 			self.LastUsed = CurTime()+0.1
 			self.Disarming = self.Disarming-1
-			self.Entity:SetColor(self.Disarming*5, self.Disarming*5, self.Disarming*5, 255)
+			self.Entity:SetColor(Color(self.Disarming*5, self.Disarming*5, self.Disarming*5, 255))
 			if (self.Disarming%5==0) then
 				self.Entity:Beep()
 			end

@@ -45,7 +45,7 @@ end
 // Burn effect
 
 function BurnPlayer(pl, duration, attacker, inflictor)
-	if ValidEntity(pl) then
+	if IsValid(pl) then
 		pl:SetNWBool("burned", true)
 		pl:GetTable().Burned = true
 		pl:GetTable().BurnAttacker = attacker
@@ -92,7 +92,7 @@ end
 // Poison effect
 
 function PoisonPlayer(pl, duration, attacker, inflictor)
-	if ValidEntity(pl) && pl:IsPlayer() then
+	if IsValid(pl) && pl:IsPlayer() then
 		pl:SetNWBool("poisoned", true)
 		pl:GetTable().Poisoned = true
 		pl:GetTable().PoisonAttacker = attacker

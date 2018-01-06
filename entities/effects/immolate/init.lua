@@ -25,7 +25,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 48, 64 ) )
 				particle:SetRoll( math.Rand( 360, 480 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( math.Rand( 150, 255 ), math.Rand( 100, 150 ), 100 )
+				particle:SetColor(Color( math.Rand( 150, 255 )), math.Rand( 100, 150 ), 100 )
 				particle:VelocityDecay( false )
 				
 			end
@@ -42,7 +42,7 @@ function EFFECT:Init( data )
 			particle:SetEndSize( math.Rand( 32, 48 ) )
 			particle:SetRoll( math.Rand( 360, 480 ) )
 			particle:SetRollDelta( math.Rand( -1, 1 ) )
-			particle:SetColor( 20, 20, 20 )
+			particle:SetColor(Color( 20, 20, 20 ))
 			particle:VelocityDecay( false )
 			
 		end

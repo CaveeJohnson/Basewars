@@ -10,7 +10,7 @@ function EFFECT:Init( data )
 	local Pos = self:GetTracerShootPos( self.Position, self.WeaponEnt, self.Attachment )
 	
 	local Velocity 	= data:GetNormal()
-	if ValidEntity(self.WeaponEnt) && ValidEntity(self.WeaponEnt:GetOwner()) then
+	if IsValid(self.WeaponEnt) && IsValid(self.WeaponEnt:GetOwner()) then
 		local AddVel = self.WeaponEnt:GetOwner():GetVelocity()*0.85
 	end
 	local jetlength = data:GetScale()
@@ -35,7 +35,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 96, 128 ) )
 				particle:SetRoll( math.Rand( 0, 360 ) )
 				particle:SetRollDelta( math.Rand( -1, 1 ) )
-				particle:SetColor( 145, math.Rand( 160, 200 ), 70 )
+				particle:SetColor(Color( 145, math.Rand( 160, 200 )), 70 )
 				particle:VelocityDecay( false )
 			
 		end
@@ -50,7 +50,7 @@ function EFFECT:Init( data )
 				particle:SetEndSize( math.Rand( 24, 48 ) )
 				particle:SetRoll( math.Rand( 0, 360 ) )
 				particle:SetRollDelta( math.Rand( -0.5, 0.5 ) )
-				particle:SetColor( 135, math.Rand( 120, 140 ), 60 )
+				particle:SetColor(Color( 135, math.Rand( 120, 140 )), 60 )
 				particle:VelocityDecay( false )
 			
 		end

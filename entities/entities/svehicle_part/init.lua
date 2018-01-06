@@ -25,7 +25,7 @@ function ENT:Think()
 	
 end
 function ENT:OnRemove()
-	if (ValidEntity(self.Core)) then
+	if (IsValid(self.Core)) then
 		//self.Core:Remove()
 	end
 end
@@ -46,7 +46,7 @@ function ENT:TankWheel()
 end
 
 function ENT:Use(ply, caller)
-	if ValidEntity(self.Core:GetPod()) then
+	if IsValid(self.Core:GetPod()) then
 		ply:EnterVehicle(self.Core:GetPod())
 	end
 end
