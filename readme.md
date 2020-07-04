@@ -12,8 +12,7 @@ You must be overjoyed! Now is the time for me to tell you to **STOP IT.**
 	3. Inspiration for gamemode IDEAS: Read **NOT IMPLEMENTATION**
 
 ##### Buh buh-ut I'm just a humble server owner!
-I hear you cry: Fear not, here's a slightly less shit version from [the basewars 2015 repo](https://github.com/hexahedronic/basewars)
-or from scriptfodder if you like that stuff.
+I hear you cry: Fear not, here's a slightly less shit version from [the basewars 2015 repo](https://github.com/CaveeJohnson/basewars-2015-final).
 
 Now I know I can't stop you using this, but seriously.
 ### **DON'T FUCKING USE THIS. IT IS FULL OF SECURITY ISSUES.**
